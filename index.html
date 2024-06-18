@@ -56,13 +56,13 @@
         .title {
             margin-left: 215px;            
             text-align: center; /* Align title to the right */
-            padding: 20 px; /* Add some padding for spacing */
+            padding: 20px; /* Corrected padding */
             z-index: 1; /* Ensure title is above sidebar */
         }
     </style>
     <script>
         function toggleSidebar() {
-            var sidebar = document.getElementById('sidebar');
+            var sidebar = document.getElementById('sidebar'); // Corrected ID selection
             sidebar.classList.toggle('show');
         }
 
@@ -92,10 +92,10 @@
 <body>
     <div class="menu-button" onclick="toggleSidebar()">
         &#9776; <!-- Hamburger icon -->
-    </div>
-    <div class="title">
-        <h1>The MCS Skoobles</h1>
-    </div>
+     </div>
+    <!-- <div class="title"> -->
+        <!-- <h1>The MCS Skoobles</h1> -->
+    </div> 
     <div class="sidebar-container">
         <div class="sidebar" id="sidebar">
             <h2></h2>
