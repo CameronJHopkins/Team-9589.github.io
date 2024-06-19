@@ -5,56 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FRC Team 9589: The MCS Skoobles</title>
     <style>
-        /* Your adjusted CSS styles here */
         body {
             background-color: #fffb077c;
             font-family: 'Times New Roman', Times, serif;
             display: flex;
-            justify-content: center; /* Center content horizontally */
-            height: 100vh; /* Ensure full viewport height */
+            justify-content: center;
+            height: 100vh;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
+
+        .sidebar-container {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            z-index: 1;
+            transition: margin-left 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            margin-left: -200px;
+        }
+
         .sidebar {
-            height: 500%;
             width: 150px;
+            height: 100%;
             background-color: #cf69c9;
             padding: 20px;
             box-shadow: 0 0 10px hsla(60, 20%, 99%, 0.1);
-            position: absolute;
-            left: -200px;
-            top: 0; /* Positioned from top */
-            bottom: 0; /* Occupy full height */
-            transition: left 0.3s cubic-bezier(0.68, -1, 0.265, 1.55);
-            z-index: 2;
             display: flex;
             flex-direction: column;
         }
-        .sidebar.show {
-            left: 0;
-        }
+
         .sidebar h2 {
             margin-top: 0;
             font-size: 1.5rem;
             text-align: center;
             color: white;
         }
+
         .tab {
             margin-bottom: 10px;
             cursor: pointer;
             color: white;
             font-size: 1.2rem;
         }
+
         .tab.active {
             font-weight: bold;
             color: blue;
         }
+
         .content {
-            margin-left: 150px; /* Ensure content doesn't overlap sidebar */
+            margin-left: 150px;
             padding: 20px;
-            flex: 1;
             text-align: center;
         }
+
         .team-member {
             display: flex;
             align-items: center;
@@ -63,8 +69,8 @@
         }
 
         .team-member img {
-            max-width: 150px; /* Adjust size as needed */
-            margin-right: 20px; /* Space between image and text */
+            max-width: 150px;
+            margin-right: 20px;
         }
 
         .team-member .member-info {
@@ -72,11 +78,11 @@
         }
 
         .team-member.alternate {
-            flex-direction: row-reverse; /* Reverse order for alternating alignment */
+            flex-direction: row-reverse;
         }
 
         .team-member.alternate img {
-            margin-left: 20px; /* Space between image and text for alternate alignment */
+            margin-left: 20px;
         }
 
         .team-member h3 {
@@ -98,51 +104,61 @@
             cursor: pointer;
             z-index: 3;
         }
-        .title {
-            text-align: center;
-            padding: 20px;
-            z-index: 1;
-        }
-        .Sponsor-levels{
-            font-size:xx-large;
+
+        .Sponsor-levels {
+            font-size: xx-large;
         }
     </style>
     <script>
+        // Function to toggle sidebar visibility
         function toggleSidebar() {
             var sidebar = document.getElementById('sidebar');
+            var sidebarContainer = document.querySelector('.sidebar-container');
+
             sidebar.classList.toggle('show');
+
+            if (sidebar.classList.contains('show')) {
+                sidebarContainer.style.marginLeft = '0';
+            } else {
+                sidebarContainer.style.marginLeft = '-200px';
+            }
         }
-    
+
+        // Function to open a specific tab and hide others
         function openTab(tabId) {
             var sidebar = document.getElementById('sidebar');
             sidebar.classList.remove('show');
-    
-            // Hide all content divs
+
+            var sidebarContainer = document.querySelector('.sidebar-container');
+            sidebarContainer.style.marginLeft = '-200px';
+
             var contentDivs = document.querySelectorAll('.content > div');
             contentDivs.forEach(function(div) {
                 div.style.display = 'none';
             });
-    
-            // Remove 'active' class from all tabs
+
             var tabs = document.querySelectorAll('.tab');
             tabs.forEach(function(tab) {
                 tab.classList.remove('active');
             });
-    
-            // Show the selected tab content
+
             var selectedTab = document.getElementById(tabId);
             if (selectedTab) {
                 selectedTab.style.display = 'block';
             }
-    
-            // Add 'active' class to the clicked tab in the sidebar
+
             var clickedTab = document.getElementById(tabId + '-tab');
             if (clickedTab) {
                 clickedTab.classList.add('active');
             }
         }
+
+        // Function to set default tab on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Open the HomeTab by default
+            openTab('HomeTab');
+        });
     </script>
-    
 </head>
 <body>
     <div class="menu-button" onclick="toggleSidebar()">
@@ -151,69 +167,67 @@
     <div class="sidebar-container">
         <div class="sidebar" id="sidebar">
             <h2>Menu</h2>
-            <div id="tab1-tab" class="tab" onclick="openTab('tab1')">Welcome</div>
-            <div id="tab2-tab" class="tab" onclick="openTab('tab2')">Our Team</div>
-            <div id="tab3-tab" class="tab" onclick="openTab('tab3')">Contact</div>
-            <div id="tab4-tab" class="tab" onclick="openTab('tab4')">Our Sponsors</div>
+            <div id="tab1-tab" class="tab" onclick="openTab('HomeTab')">Home</div>
+            <div id="tab2-tab" class="tab" onclick="openTab('MembersTab')">Our Team</div>
+            <div id="tab3-tab" class="tab" onclick="openTab('ContactTab')">Contact</div>
+            <div id="tab4-tab" class="tab" onclick="openTab('SponsorTab')">Our Sponsors</div>
         </div>
-        <div class="content">
-            <div id="tab1">
-                <h2>Welcome</h2>
-                <p>You have been welcomed<br><br><em>This page is still under development.</em></p>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDM2DuV_g-yYEkUCbMqTLclFwiyfwQA8X95A&s" alt="">
-                <p>This is the official website for the FRC team 9589: The MCS Innovators</p>
+    </div>
+    <div class="content">
+        <div id="HomeTab" style="display: none;">
+            <h2>Home</h2>
+            <p>You have been welcomed<br><br><em>This page is still under development.</em></p>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDM2DuV_g-yYEkUCbMqTLclFwiyfwQA8X95A&s" alt="">
+            <p>This is the official website for the FRC team 9589: The MCS Innovators</p>
+        </div>
+        <div id="MembersTab" style="display: none;">
+            <h2>Our Team</h2>
+            <div class="team-member">
+                <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" alt="Person 1">
+                <div class="member-info">
+                    <h3>Name of Person 1</h3>
+                    <p>Description or role of Person 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
             </div>
-            <div id="tab2" style="display: none;">
-                <h2>Our Team</h2>
-                <div class="team-member">
-                    <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" alt="Person 1">
-                    <div class="member-info">
-                        <h3>Name of Person 1</h3>
-                        <p>Description or role of Person 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
+            <div class="team-member alternate">
+                <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" alt="Person 2">
+                <div class="member-info">
+                    <h3>Name of Person 2</h3>
+                    <p>Description or role of Person 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
-                <div class="team-member alternate">
-                    <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" alt="Person 2">
-                    <div class="member-info">
-                        <h3>Name of Person 2</h3>
-                        <p>Description or role of Person 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" alt="Person 1">
-                    <div class="member-info">
-                        <h3>Name of Person 3</h3>
-                        <p>Description or role of Person 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-                <div class="team-member alternate">
-                    <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" alt="Person 2">
-                    <div class="member-info">
-                        <h3>Name of Person 4</h3>
-                        <p>Description or role of Person 4. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-                <!-- Add more team members following the same alternating structure -->
-            </div>                    
-            <div id="tab3" style="display: none;">
-                <h2>Contact</h2>
-                <p>Here is where contact information will be displayed</p>
             </div>
-            <div id="tab4" style="display:none;">
-                <h2>Our Sponsors</h2>
-                <p class="Sponsor-levels"><strong>Gold Sponsors</strong><br>   
-                        <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" weight="250px"><br>
-                        <strong>Silver Sponsors</strong><br>
-                        <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" weight="250px"><br>
-                        <strong>Bronze Sponsors</strong><br>
-                        <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" weight="250px"><br>
-                        <strong>Donors</strong><br>
-                        <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" weight="250px"><br>
-                </p>
+            <div class="team-member">
+                <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" alt="Person 1">
+                <div class="member-info">
+                    <h3>Name of Person 3</h3>
+                    <p>Description or role of Person 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
             </div>
+            <div class="team-member alternate">
+                <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" alt="Person 2">
+                <div class="member-info">
+                    <h3>Name of Person 4</h3>
+                    <p>Description or role of Person 4. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+        </div>
+        <div id="ContactTab" style="display: none;">
+            <h2>Contact</h2>
+            <p>Here is where contact information will be displayed</p>
+        </div>
+        <div id="SponsorTab" style="display: none;">
+            <h2>Our Sponsors</h2>
+            <p class="Sponsor-levels"><strong>Gold Sponsors</strong><br><br>
+                <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" width="250px"><br><br><br><br><br><br>
+                <strong>Silver Sponsors</strong><br><br>
+                <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" width="250px"><br><br><br><br><br><br>
+                <strong>Bronze Sponsors</strong><br><br>
+                <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" width="250px"><br><br><br><br><br><br>
+                <strong>Donors</strong><br><br>
+                <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" width="250px"><br><br><br><br><br><br>
+                <em>Interested in sponsoring our team? Contact us <a href="#" onclick="openTab('ContactTab')">here</a>.</em><br><br><br>
+            </p>
         </div>
     </div>
 </body>
 </html>
-
-    
