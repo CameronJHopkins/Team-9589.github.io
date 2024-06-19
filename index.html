@@ -5,26 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FRC Team 9589: The MCS Skoobles</title>
     <style>
-        /* Your CSS styles here */
+        /* Your adjusted CSS styles here */
         body {
             background-color: #fffb077c;
             font-family: 'Times New Roman', Times, serif;
             display: flex;
-            flex-direction: row;
+            justify-content: center; /* Center content horizontally */
+            height: 100vh; /* Ensure full viewport height */
             margin: 0;
             padding: 0;
-            text-align: center;
         }
         .sidebar {
-            width: 215px; /* Adjust as needed */
-            height: 100%;
+            width: 150px;
             background-color: #cf69c9;
             padding: 20px;
             box-shadow: 0 0 10px hsla(60, 20%, 99%, 0.1);
-            position: fixed;
-            left: -200px; /* Hide sidebar by default */
-            transition: left 0.3s ease;
-            z-index: 2; /* Ensure sidebar is above content */
+            position: absolute;
+            left: -200px;
+            top: 0; /* Positioned from top */
+            bottom: 0; /* Occupy full height */
+            transition: left 0.3s cubic-bezier(0.68, -1, 0.265, 1.55);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
         }
         .sidebar.show {
             left: 0;
@@ -32,93 +35,104 @@
         .sidebar h2 {
             margin-top: 0;
             font-size: 1.5rem;
+            text-align: center;
+            color: white;
         }
         .tab {
             margin-bottom: 10px;
             cursor: pointer;
+            color: white;
+            font-size: 1.2rem;
         }
         .tab.active {
             font-weight: bold;
             color: blue;
         }
         .content {
-            margin-left: 215px;
+            margin-left: 150px; /* Ensure content doesn't overlap sidebar */
             padding: 20px;
             flex: 1;
+            text-align: center;
         }
         .menu-button {
             position: fixed;
             top: 20px;
             left: 20px;
             cursor: pointer;
-            z-index: 3; /* Ensure it's above other content */
+            z-index: 3;
         }
         .title {
-            margin-left: 215px;            
-            text-align: center; /* Align title to the right */
-            padding: 20px; /* Corrected padding */
-            z-index: 1; /* Ensure title is above sidebar */
+            text-align: center;
+            padding: 20px;
+            z-index: 1;
         }
     </style>
     <script>
         function toggleSidebar() {
-            var sidebar = document.getElementById('sidebar'); // Corrected ID selection
+            var sidebar = document.getElementById('sidebar');
             sidebar.classList.toggle('show');
         }
-
+    
         function openTab(tabId) {
-            // Hide sidebar after selecting a tab
             var sidebar = document.getElementById('sidebar');
             sidebar.classList.remove('show');
-
+    
             // Hide all content divs
             var contentDivs = document.querySelectorAll('.content > div');
             contentDivs.forEach(function(div) {
                 div.style.display = 'none';
             });
-
+    
             // Remove 'active' class from all tabs
             var tabs = document.querySelectorAll('.tab');
             tabs.forEach(function(tab) {
                 tab.classList.remove('active');
             });
-
-            // Show the selected tab content and mark the tab as active
-            document.getElementById(tabId).style.display = 'block';
-            document.querySelector('.tab[id="' + tabId + '"]').classList.add('active');
+    
+            // Show the selected tab content
+            var selectedTab = document.getElementById(tabId);
+            if (selectedTab) {
+                selectedTab.style.display = 'block';
+            }
+    
+            // Add 'active' class to the clicked tab in the sidebar
+            var clickedTab = document.getElementById(tabId + '-tab');
+            if (clickedTab) {
+                clickedTab.classList.add('active');
+            }
         }
     </script>
+    
 </head>
 <body>
     <div class="menu-button" onclick="toggleSidebar()">
-        &#9776; <!-- Hamburger icon -->
-     </div>
-    <!-- <div class="title"> -->
-        <!-- <h1>The MCS Skoobles</h1> -->
-    </div> 
+        &#9776;
+    </div>
     <div class="sidebar-container">
         <div class="sidebar" id="sidebar">
-            <h2></h2>
-            <div class="tab" onclick="openTab('tab1')">Welcome</div>
-            <div class="tab" onclick="openTab('tab2')">Topic</div>
-            <div class="tab" onclick="openTab('tab3')">That Thing</div>
-            <div class="tab" onclick="openTab('tab4')">Skooble</div>
+            <h2>Menu</h2>
+            <div id="tab1-tab" class="tab" onclick="openTab('tab1')">Welcome</div>
+            <div id="tab2-tab" class="tab" onclick="openTab('tab2')">Topic</div>
+            <div id="tab3-tab" class="tab" onclick="openTab('tab3')">That Thing</div>
+            <div id="tab4-tab" class="tab" onclick="openTab('tab4')">Skooble</div>
         </div>
         <div class="content">
             <div id="tab1">
-                <h1>Welcome</h1>
+                <h2>Welcome</h2>
                 <p>You have been welcomed<br><br><em>This page is still under development.</em></p>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDM2DuV_g-yYEkUCbMqTLclFwiyfwQA8X95A&s" alt="">
+                <p>This is the official website for the FRC team 9589: The MCS Innovators</p>
             </div>
             <div id="tab2" style="display: none;">
-                <h1>Topic</h1>
+                <h2>Topic</h2>
                 <p>There is a topic</p>
             </div>
             <div id="tab3" style="display: none;">
-                <h1>That Thing</h1>
+                <h2>That Thing</h2>
                 <p>It is a thing</p>
             </div>
             <div id="tab4" style="display: none;">
-                <h1>Skooble</h1>
+                <h2>Skooble</h2>
                 <p>Skooble is a robot</p>
             </div>
         </div>
