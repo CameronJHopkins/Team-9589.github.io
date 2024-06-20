@@ -5,17 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FRC Team 9589: The MCS Skoobles</title>
     <style>
+        /* General body styling */
         body {
-            background-color: #fffb077c;
+            background-color: #fffb0741;
             font-family: 'Times New Roman', Times, serif;
             display: flex;
             justify-content: center;
             height: 100vh;
             margin: 0;
             padding: 0;
+            font-size: x-large;
             overflow-x: hidden;
+            position: relative; /* Ensure body is relative for absolute positioning of back-to-top button */
         }
 
+        /* Sidebar styling */
         .sidebar-container {
             position: fixed;
             left: 0;
@@ -29,7 +33,7 @@
         .sidebar {
             width: 150px;
             height: 100%;
-            background-color: #cf69c9;
+            background-color: rgba(128, 0, 128, 0.521);
             padding: 20px;
             box-shadow: 0 0 10px hsla(60, 20%, 99%, 0.1);
             display: flex;
@@ -38,7 +42,7 @@
 
         .sidebar h2 {
             margin-top: 0;
-            font-size: 1.5rem;
+            font-size:  2rem;
             text-align: center;
             color: white;
         }
@@ -47,7 +51,8 @@
             margin-bottom: 10px;
             cursor: pointer;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
+            text-align: center;
         }
 
         .tab.active {
@@ -55,8 +60,9 @@
             color: blue;
         }
 
+        /* Content area styling */
         .content {
-            margin-left: 150px;
+            margin-left: 150px; /* Adjust according to sidebar width */
             padding: 20px;
             text-align: center;
         }
@@ -108,8 +114,95 @@
         .Sponsor-levels {
             font-size: xx-large;
         }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            cursor: pointer;
+            z-index: 2;
+            background-color: #007bff;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-size: 1.5rem;
+            display: none; /* Initially hidden */
+        }
+
+        .back-to-top.show {
+            display: block; /* Show when scrolled down */
+        }
+
+        /* Adjust the 3D model viewer */
+        #modelViewer {
+            width: 100%;
+            height: 600px; /* Adjust height as needed */
+            background-color: #ccc; /* Fallback background */
+        }
     </style>
+    <!-- Include necessary Three.js scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
     <script>
+        // Initialize variables for Three.js scene, camera, and renderer
+        var scene, camera, renderer;
+        var model;
+
+        // Function to initialize Three.js scene and load 3D model
+        function initThreeJS() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer();
+            
+            // Adjust renderer size to match the window
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            // Append renderer to the modelViewer div element
+            document.getElementById('modelViewer').appendChild(renderer.domElement);
+
+            // Adjust camera position
+            camera.position.z = 5;
+
+            // Load 3D model
+            var loader = new THREE.GLTFLoader();
+            loader.load('/home/team9589/Web/703c4e08-b119-4ab6-ad62-81a91cec8685.gltf', function(gltf) {
+                model = gltf.scene;
+                
+                // Add model to the scene
+                scene.add(model);
+
+                // Optional: Adjust model position, rotation, scale
+                model.position.set(0, 0, 0); // Example position
+                model.rotation.set(0, Math.PI / 2, 0); // Example rotation
+                model.scale.set(0.5, 0.5, 0.5); // Example scale
+
+                // Start animation loop after model is loaded
+                animateThreeJS();
+            });
+        }
+
+        // Function to animate Three.js scene
+        function animateThreeJS() {
+            requestAnimationFrame(animateThreeJS);
+            renderer.render(scene, camera);
+        }
+
+        // Event listener for when the "Team Photos" tab is clicked
+        document.getElementById('tab5-tab').addEventListener('click', openPhotosTab);
+
+        // Function to open the "Team Photos" tab and initialize Three.js if not already initialized
+        function openPhotosTab() {
+            openTab('PhotoTab'); // Activate the "Team Photos" tab
+            initThreeJS(); // Initialize Three.js if not already done
+        }
+
+
+        // Event listener for when the "Team Photos" tab is clicked
+        document.getElementById('tab5-tab').addEventListener('click', openPhotosTab);
+
         // Function to toggle sidebar visibility
         function toggleSidebar() {
             var sidebar = document.getElementById('sidebar');
@@ -151,6 +244,11 @@
             if (clickedTab) {
                 clickedTab.classList.add('active');
             }
+
+            // Adjust for Three.js scene if opening the "Team Photos" tab
+            if (tabId === 'PhotoTab') {
+                initThreeJS(); // Initialize Three.js if not already done
+            }
         }
 
         // Function to set default tab on page load
@@ -158,6 +256,40 @@
             // Open the HomeTab by default
             openTab('HomeTab');
         });
+
+        // Resize handler for Three.js renderer
+        window.addEventListener('resize', function() {
+            var width = window.innerWidth;
+            var height = window.innerHeight;
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        });
+
+        // Function to scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Smooth scroll
+            });
+        }
+
+        // Show or hide back-to-top button based on scroll position
+        window.addEventListener('scroll', function() {
+            var button = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) { // Adjust the threshold as needed
+                button.classList.add('show');
+            } else {
+                button.classList.remove('show');
+            }
+        });
+
+        // Attach click event to back-to-top button
+        document.querySelector('.back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            scrollToTop();
+        });
+        
     </script>
 </head>
 <body>
@@ -171,10 +303,12 @@
             <div id="tab2-tab" class="tab" onclick="openTab('MembersTab')">Our Team</div>
             <div id="tab3-tab" class="tab" onclick="openTab('ContactTab')">Contact</div>
             <div id="tab4-tab" class="tab" onclick="openTab('SponsorTab')">Our Sponsors</div>
+            <div id="tab5-tab" class="tab" onclick="openTab('PhotoTab')">Team Photos</div>
         </div>
     </div>
     <div class="content">
-        <div id="HomeTab" style="display: none;">
+        <!-- Ensure the content is displayed correctly -->
+        <div id="HomeTab" style="display: block;">
             <h2>Home</h2>
             <p>You have been welcomed<br><br><em>This page is still under development.</em></p>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDM2DuV_g-yYEkUCbMqTLclFwiyfwQA8X95A&s" alt="">
@@ -183,28 +317,28 @@
         <div id="MembersTab" style="display: none;">
             <h2>Our Team</h2>
             <div class="team-member">
-                <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" alt="Person 1">
+                <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif" alt="Person 1">
                 <div class="member-info">
                     <h3>Name of Person 1</h3>
                     <p>Description or role of Person 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
             </div>
             <div class="team-member alternate">
-                <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" alt="Person 2">
+                <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif" alt="Person 2">
                 <div class="member-info">
                     <h3>Name of Person 2</h3>
                     <p>Description or role of Person 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
             </div>
             <div class="team-member">
-                <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" alt="Person 1">
+                <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif" alt="Person 3">
                 <div class="member-info">
                     <h3>Name of Person 3</h3>
                     <p>Description or role of Person 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
             </div>
             <div class="team-member alternate">
-                <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" alt="Person 2">
+                <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif" alt="Person 4">
                 <div class="member-info">
                     <h3>Name of Person 4</h3>
                     <p>Description or role of Person 4. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -213,11 +347,15 @@
         </div>
         <div id="ContactTab" style="display: none;">
             <h2>Contact</h2>
-            <p>Here is where contact information will be displayed</p>
+            <p>General queries can be sent to <em>frcteam9589@gmail.com</em><br><br><br>
+                   To contact our Head Mentor: <em>email</em> <br><br><br>
+                   To report an issue with this webpage: <em>cameronh344728@gmail.com</em>
+            </p>
         </div>
         <div id="SponsorTab" style="display: none;">
             <h2>Our Sponsors</h2>
-            <p class="Sponsor-levels"><strong>Gold Sponsors</strong><br><br>
+            <p class="Sponsor-levels">
+                <strong>Gold Sponsors</strong><br><br>
                 <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" width="250px"><br><br><br><br><br><br>
                 <strong>Silver Sponsors</strong><br><br>
                 <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" width="250px"><br><br><br><br><br><br>
@@ -228,6 +366,148 @@
                 <em>Interested in sponsoring our team? Contact us <a href="#" onclick="openTab('ContactTab')">here</a>.</em><br><br><br>
             </p>
         </div>
+        <div id="PhotoTab" style="display: none;">
+            <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif">
+            <!-- Placeholder for the 3D model -->
+            <div id="modelViewer"></div>
+            <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif">
+        </div>
     </div>
+
+    </div>
+
+    <script>
+        // Initialize Three.js scene, camera, renderer
+        var scene, camera, renderer;
+        var model;
+
+        function initThreeJS() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight); // Set renderer size to match the window
+            document.getElementById('modelViewer').appendChild(renderer.domElement);
+
+            // Adjust camera position
+            camera.position.z = 5;
+
+            // Load 3D model
+            var loader = new THREE.GLTFLoader();
+            loader.load('path_to_your_model.gltf', function(gltf) {
+                model = gltf.scene;
+                scene.add(model);
+
+                // Optional: Adjust model position, rotation, scale
+                model.position.set(0, 0, 0); // Example position
+                model.rotation.set(0, Math.PI / 2, 0); // Example rotation
+                model.scale.set(0.5, 0.5, 0.5); // Example scale
+
+                animateThreeJS(); // Start animation loop after model is loaded
+            });
+        }
+
+        // Function to animate Three.js scene
+        function animateThreeJS() {
+            requestAnimationFrame(animateThreeJS);
+            renderer.render(scene, camera);
+        }
+
+        // Function to open the "Team Photos" tab and initialize Three.js if not already initialized
+        function openPhotosTab() {
+            openTab('PhotoTab'); // Activate the "Team Photos" tab
+            initThreeJS(); // Initialize Three.js if not already done
+        }
+
+        // Event listener for when the "Team Photos" tab is clicked
+        document.getElementById('tab5-tab').addEventListener('click', openPhotosTab);
+
+        // Function to toggle sidebar visibility
+        function toggleSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            var sidebarContainer = document.querySelector('.sidebar-container');
+
+            sidebar.classList.toggle('show');
+
+            if (sidebar.classList.contains('show')) {
+                sidebarContainer.style.marginLeft = '0';
+            } else {
+                sidebarContainer.style.marginLeft = '-200px';
+            }
+        }
+
+        // Function to open a specific tab and hide others
+        function openTab(tabId) {
+            var sidebar = document.getElementById('sidebar');
+            sidebar.classList.remove('show');
+
+            var sidebarContainer = document.querySelector('.sidebar-container');
+            sidebarContainer.style.marginLeft = '-200px';
+
+            var contentDivs = document.querySelectorAll('.content > div');
+            contentDivs.forEach(function(div) {
+                div.style.display = 'none';
+            });
+
+            var tabs = document.querySelectorAll('.tab');
+            tabs.forEach(function(tab) {
+                tab.classList.remove('active');
+            });
+
+            var selectedTab = document.getElementById(tabId);
+            if (selectedTab) {
+                selectedTab.style.display = 'block';
+            }
+
+            var clickedTab = document.getElementById(tabId + '-tab');
+            if (clickedTab) {
+                clickedTab.classList.add('active');
+            }
+
+            // Adjust for Three.js scene if opening the "Team Photos" tab
+            if (tabId === 'PhotoTab') {
+                initThreeJS(); // Initialize Three.js if not already done
+            }
+        }
+
+        // Function to set default tab on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Open the HomeTab by default
+            openTab('HomeTab');
+        });
+
+        // Resize handler for Three.js renderer
+        window.addEventListener('resize', function() {
+            var width = window.innerWidth;
+            var height = window.innerHeight;
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        });
+
+        // Function to scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Smooth scroll
+            });
+        }
+
+        // Show or hide back-to-top button based on scroll position
+        window.addEventListener('scroll', function() {
+            var button = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) { // Adjust the threshold as needed
+                button.classList.add('show');
+            } else {
+                button.classList.remove('show');
+            }
+        });
+
+        // Attach click event to back-to-top button
+        document.querySelector('.back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            scrollToTop();
+        });
+    </script>
+    <div class="back-to-top" onclick="scrollToTop()">&uarr;</div>
 </body>
 </html>
