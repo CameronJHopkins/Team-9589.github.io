@@ -144,9 +144,82 @@
             display: block; /* Show when scrolled down */
         }
 
+        /* Thermometer styling */
+        #thermometer {
+            margin: 20px auto; /* Adjust margin as needed */
+            width: 30px; /* Adjust width as needed */
+            height: 300px; /* Adjust height as needed */
+            position: relative;
+            border: 2px solid rgb(143, 137, 137);
+            /* overflow: hidden; */
+            z-index: 3;
+            border-radius: 50px 50px 0 0; /* Rounded corners for the bulb */
+            background-color: #ccc;
+        }
+
+        #progress {
+            width: 30px;
+            height: 50%;
+            background-color: #ff2600; /* Progress bar color */
+            position: absolute;
+            border-radius: 50px 50px 0 0 ; /* Rounded top corners */
+            margin:20px auto;
+            top: 40%;
+            z-index: 1;
+        }
+
+        .graduation {
+            position: absolute;
+            top: calc(100% - var(--graduation-position));
+            left: 40px; /* Adjust the distance from the thermometer */
+            transform: translateY(-50%);
+            font-size: 1rem;
+            font-weight: bold;
+            color: #555;
+            z-index: 2;
+        }
+
+        #graduation-100 {
+            top: calc(0%);
+        }
+
+        #graduation-75 {
+            top: calc(100% - 75%);
+        }
+
+        #graduation-50 {
+            top: calc(100% - 50%);
+        }
+
+        #graduation-25 {
+            top: calc(100% - 25%);
+        }
+
+        #progress.show {
+            transform: scaleY(1); /* Scale to full height based on percentage */
+        }
+
+        #bulb {
+            width: 50px; /* Adjust size of bulb */
+            height: 50px; /* Adjust size of bulb */
+            background-color: #ff2600; /* Color of the bulb */
+            border: 3px solid rgb(143, 137, 137);
+            position: absolute;
+            bottom: 10%;
+            left: 50%; /* Position the bulb at the bottom center */
+            transform: translateX(-50%) translateY(100%); /* Center the bulb */
+            border-radius: 50%; /* Make the bulb circular */
+            z-index: 1;
+        }
+     
+        /* Percentage text styling */
+        #progress-percent {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
   </style>
-    <!-- Include necessary Three.js scripts -->
-    <script>
+  <script>
         // Event listener for when the "Team Photos" tab is clicked
         document.getElementById('tab5-tab').addEventListener('click', openPhotosTab);
 
@@ -241,7 +314,6 @@
         </div>
     </div>
     <div class="content">
-        <!-- Ensure the content is displayed correctly -->
         <div id="HomeTab" style="display: block;">
             <h2>FRC Team 9589</h2>
             <p><em>This page is still under development.</em></p>
@@ -254,10 +326,20 @@
             <h3>Help Support Our Team</h3>
             <p>It takes generous donations from the community to keep our program running.  <br>
             To see a list of our curent sponsors, see our <a href="#" onclick="openTab('SponsorTab')">Sponsors Page</a><br>
-            Interested in sponsoring us?  Contact us <a href="#" onclick="openTab('ContactTab')">Here.</a>
-            </p>
-            <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif">
-        </div>
+            Interested in sponsoring us?  Contact us <a href="#" onclick="openTab('ContactTab')">Here.</a><br><br>
+            Goal: $10<br><br>
+            </p> 
+            <div id="thermometer">
+                <div id="graduation-100" class="graduation">100%</div>
+                <div id="graduation-75" class="graduation">75%</div>
+                <div id="graduation-50" class="graduation">50%</div>
+                <div id="graduation-25" class="graduation">25%</div>    
+                <div id="bulb"></div>
+                <div id="progress"></div>
+            </div>
+            <br><br>
+            <p>Fundraising Goal Progress: 50%</p><br><br>
+            </div>
         <div id="MembersTab" style="display: none;">
             <h2>Our Team</h2>
             <div class="team-member">
@@ -397,6 +479,7 @@
             e.preventDefault();
             scrollToTop();
         });
+
     </script>
     <div class="back-to-top" onclick="scrollToTop()">&uarr;</div>
 </body>
