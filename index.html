@@ -111,6 +111,14 @@
             z-index: 3;
         }
 
+        .team-logo{
+            position: fixed;
+            top: 25px;
+            left: 950px;
+            cursor: pointer;
+            z-index: 3;
+        }
+
         .Sponsor-levels {
             font-size: xx-large;
         }
@@ -136,70 +144,9 @@
             display: block; /* Show when scrolled down */
         }
 
-        /* Adjust the 3D model viewer */
-        #modelViewer {
-            width: 100%;
-            height: 600px; /* Adjust height as needed */
-            background-color: #ccc; /* Fallback background */
-        }
-    </style>
+  </style>
     <!-- Include necessary Three.js scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
     <script>
-        // Initialize variables for Three.js scene, camera, and renderer
-        var scene, camera, renderer;
-        var model;
-
-        // Function to initialize Three.js scene and load 3D model
-        function initThreeJS() {
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            renderer = new THREE.WebGLRenderer();
-            
-            // Adjust renderer size to match the window
-            renderer.setSize(window.innerWidth, window.innerHeight);
-
-            // Append renderer to the modelViewer div element
-            document.getElementById('modelViewer').appendChild(renderer.domElement);
-
-            // Adjust camera position
-            camera.position.z = 5;
-
-            // Load 3D model
-            var loader = new THREE.GLTFLoader();
-            loader.load('/home/team9589/Web/703c4e08-b119-4ab6-ad62-81a91cec8685.gltf', function(gltf) {
-                model = gltf.scene;
-                
-                // Add model to the scene
-                scene.add(model);
-
-                // Optional: Adjust model position, rotation, scale
-                model.position.set(0, 0, 0); // Example position
-                model.rotation.set(0, Math.PI / 2, 0); // Example rotation
-                model.scale.set(0.5, 0.5, 0.5); // Example scale
-
-                // Start animation loop after model is loaded
-                animateThreeJS();
-            });
-        }
-
-        // Function to animate Three.js scene
-        function animateThreeJS() {
-            requestAnimationFrame(animateThreeJS);
-            renderer.render(scene, camera);
-        }
-
-        // Event listener for when the "Team Photos" tab is clicked
-        document.getElementById('tab5-tab').addEventListener('click', openPhotosTab);
-
-        // Function to open the "Team Photos" tab and initialize Three.js if not already initialized
-        function openPhotosTab() {
-            openTab('PhotoTab'); // Activate the "Team Photos" tab
-            initThreeJS(); // Initialize Three.js if not already done
-        }
-
-
         // Event listener for when the "Team Photos" tab is clicked
         document.getElementById('tab5-tab').addEventListener('click', openPhotosTab);
 
@@ -252,15 +199,6 @@
             openTab('HomeTab');
         });
 
-        // Resize handler for Three.js renderer
-        window.addEventListener('resize', function() {
-            var width = window.innerWidth;
-            var height = window.innerHeight;
-            renderer.setSize(width, height);
-            camera.aspect = width / height;
-            camera.updateProjectionMatrix();
-        });
-
         // Function to scroll to top
         function scrollToTop() {
             window.scrollTo({
@@ -291,6 +229,7 @@
     <div class="menu-button" onclick="toggleSidebar()">
         &#9776;
     </div>
+    <div class="team-logo"><img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif" height="30px" width="30px"></div>
     <div class="sidebar-container">
         <div class="sidebar" id="sidebar">
             <h2>Menu</h2>
