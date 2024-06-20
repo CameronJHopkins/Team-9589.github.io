@@ -244,11 +244,6 @@
             if (clickedTab) {
                 clickedTab.classList.add('active');
             }
-
-            // Adjust for Three.js scene if opening the "Team Photos" tab
-            if (tabId === 'PhotoTab') {
-                initThreeJS(); // Initialize Three.js if not already done
-            }
         }
 
         // Function to set default tab on page load
@@ -301,18 +296,28 @@
             <h2>Menu</h2>
             <div id="tab1-tab" class="tab" onclick="openTab('HomeTab')">Home</div>
             <div id="tab2-tab" class="tab" onclick="openTab('MembersTab')">Our Team</div>
-            <div id="tab3-tab" class="tab" onclick="openTab('ContactTab')">Contact</div>
             <div id="tab4-tab" class="tab" onclick="openTab('SponsorTab')">Our Sponsors</div>
             <div id="tab5-tab" class="tab" onclick="openTab('PhotoTab')">Team Photos</div>
+            <div id="tab3-tab" class="tab" onclick="openTab('ContactTab')">Contacts</div>
         </div>
     </div>
     <div class="content">
         <!-- Ensure the content is displayed correctly -->
         <div id="HomeTab" style="display: block;">
-            <h2>Home</h2>
-            <p>You have been welcomed<br><br><em>This page is still under development.</em></p>
+            <h2>FRC Team 9589</h2>
+            <p><em>This page is still under development.</em></p>
+            <h3>About Us</h3>
+            <p>Located in Deep River, ON, <u><a href="https://mcs.rcdsb.on.ca/en/index.asp">MCS</a></u> is the home of the First Robotics Team 9589. <br> Founded in 2023, the MCS Innovators are existing.</p>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDM2DuV_g-yYEkUCbMqTLclFwiyfwQA8X95A&s" alt="">
-            <p>This is the official website for the FRC team 9589: The MCS Innovators</p>
+            <h3>Videos of us competing</h3>
+            <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif">
+            <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif">
+            <h3>Help Support Our Team</h3>
+            <p>It takes generous donations from the community to keep our program running.  <br>
+            To see a list of our curent sponsors, see our <a href="#" onclick="openTab('SponsorTab')">Sponsors Page</a><br>
+            Interested in sponsoring us?  Contact us <a href="#" onclick="openTab('ContactTab')">Here.</a>
+            </p>
+            <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif">
         </div>
         <div id="MembersTab" style="display: none;">
             <h2>Our Team</h2>
@@ -346,11 +351,17 @@
             </div>
         </div>
         <div id="ContactTab" style="display: none;">
-            <h2>Contact</h2>
+            <h2><u>Contact</u></h2>
             <p>General queries can be sent to <em>frcteam9589@gmail.com</em><br><br><br>
                    To contact our Head Mentor: <em>email</em> <br><br><br>
-                   To report an issue with this webpage: <em>cameronh344728@gmail.com</em>
+                   To report an issue with this webpage: <em>cameronh344728@gmail.com</em><br><br><br>  
             </p>
+            <h2><u>Socials:</u></h2>
+            <p>Instagram: <em>Instagram</em><br><br>
+                    Facebook: <em>facebook</em><br><br>
+                    X: <em>Twitter</em>
+                    <br><br><br>
+                </p>
         </div>
         <div id="SponsorTab" style="display: none;">
             <h2>Our Sponsors</h2>
@@ -368,8 +379,6 @@
         </div>
         <div id="PhotoTab" style="display: none;">
             <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif">
-            <!-- Placeholder for the 3D model -->
-            <div id="modelViewer"></div>
             <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif">
         </div>
     </div>
@@ -377,50 +386,6 @@
     </div>
 
     <script>
-        // Initialize Three.js scene, camera, renderer
-        var scene, camera, renderer;
-        var model;
-
-        function initThreeJS() {
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            renderer = new THREE.WebGLRenderer();
-            renderer.setSize(window.innerWidth, window.innerHeight); // Set renderer size to match the window
-            document.getElementById('modelViewer').appendChild(renderer.domElement);
-
-            // Adjust camera position
-            camera.position.z = 5;
-
-            // Load 3D model
-            var loader = new THREE.GLTFLoader();
-            loader.load('path_to_your_model.gltf', function(gltf) {
-                model = gltf.scene;
-                scene.add(model);
-
-                // Optional: Adjust model position, rotation, scale
-                model.position.set(0, 0, 0); // Example position
-                model.rotation.set(0, Math.PI / 2, 0); // Example rotation
-                model.scale.set(0.5, 0.5, 0.5); // Example scale
-
-                animateThreeJS(); // Start animation loop after model is loaded
-            });
-        }
-
-        // Function to animate Three.js scene
-        function animateThreeJS() {
-            requestAnimationFrame(animateThreeJS);
-            renderer.render(scene, camera);
-        }
-
-        // Function to open the "Team Photos" tab and initialize Three.js if not already initialized
-        function openPhotosTab() {
-            openTab('PhotoTab'); // Activate the "Team Photos" tab
-            initThreeJS(); // Initialize Three.js if not already done
-        }
-
-        // Event listener for when the "Team Photos" tab is clicked
-        document.getElementById('tab5-tab').addEventListener('click', openPhotosTab);
-
         // Function to toggle sidebar visibility
         function toggleSidebar() {
             var sidebar = document.getElementById('sidebar');
@@ -462,26 +427,12 @@
             if (clickedTab) {
                 clickedTab.classList.add('active');
             }
-
-            // Adjust for Three.js scene if opening the "Team Photos" tab
-            if (tabId === 'PhotoTab') {
-                initThreeJS(); // Initialize Three.js if not already done
-            }
         }
 
         // Function to set default tab on page load
         document.addEventListener('DOMContentLoaded', function() {
             // Open the HomeTab by default
             openTab('HomeTab');
-        });
-
-        // Resize handler for Three.js renderer
-        window.addEventListener('resize', function() {
-            var width = window.innerWidth;
-            var height = window.innerHeight;
-            renderer.setSize(width, height);
-            camera.aspect = width / height;
-            camera.updateProjectionMatrix();
         });
 
         // Function to scroll to top
