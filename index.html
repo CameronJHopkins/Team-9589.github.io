@@ -118,6 +118,9 @@
             cursor: pointer;
             z-index: 3;
         }
+        .team-logo img:hover {
+            filter: brightness(50%);
+        }
 
         .Sponsor-levels {
             font-size: xx-large;
@@ -139,6 +142,26 @@
             font-size: 1.5rem;
             display: none; /* Initially hidden */
         }
+        .tooltip {
+            position: absolute;
+            top: 50%;
+            left: calc(50% - 200px); 
+            background-color: rgba(219, 15, 238, 0.635);
+            color: rgb(246, 218, 7);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            display: none; /* Initially hidden */
+        }
+
+        #thermometer:hover .tooltip {
+            display: block; /* Show on hover */
+            filter: brightness(-100%);
+        }
+
+        .back-to-top:hover{
+            background-color: #001aff;
+        }
 
         .back-to-top.show {
             display: block; /* Show when scrolled down */
@@ -155,6 +178,9 @@
             z-index: 3;
             border-radius: 50px 50px 0 0; /* Rounded corners for the bulb */
             background-color: #ccc;
+        }
+        #thermometer:hover{
+            filter: brightness(50%);
         }
 
         #progress {
@@ -234,8 +260,8 @@
     }
 
     .photo-gallery img {
-        width: 350px; /* Ensure images don't exceed their container */
-        height: 200px; /* Maintain aspect ratio */
+        width: 240px; /* Ensure images don't exceed their container */
+        height: 175px; /* Maintain aspect ratio */
     }
 
     .photo-gallery figcaption {
@@ -325,7 +351,11 @@
     <div class="menu-button" onclick="toggleSidebar()">
         &#9776;
     </div>
-    <div class="team-logo"><img src="RoboticsLogo.jpg" height="35px" width="50px"></div>
+    <div class="team-logo">
+        <a href="#" onclick="openTab('HomeTab')">
+            <img src="RoboticsLogo.jpg" height="35px" width="50px">
+        </a>
+    </div>    
     <div class="sidebar-container">
         <div class="sidebar" id="sidebar">
             <h2>Menu</h2>
@@ -359,6 +389,7 @@
                 <div id="graduation-25" class="graduation">25%</div>    
                 <div id="bulb"></div>
                 <div id="progress"></div>
+                <div id="tooltip" class="tooltip">Current fundraising total: $5</div>
             </div>
             <br><br>
             <p>Fundraising Goal Progress: 50%</p><br><br>
@@ -439,33 +470,37 @@
                 <figure>
                     <img class="TeamPhotos" src="CameronPraciceWithSkooble.JPG">
                     <figcaption>Callum Sleeping</figcaption>
-                </figure><figure>
+                </figure>
+                <figure>
                     <img class="TeamPhotos" src="ChloeAward.jpg">
                     <figcaption>Callum Sleeping</figcaption>
-                </figure><figure>
+                </figure>
+                <figure>
                     <img class="TeamPhotos" src="TeamPhotoWithAward.jpg">
                     <figcaption>Callum Sleeping</figcaption>
-                </figure><figure>
+                </figure>
+                <figure>
                     <img class="TeamPhotos" src="TeamPhotoArnprior.jpg">
                     <figcaption>Callum Sleeping</figcaption>
-                </figure><figure>
+                </figure>
+                <figure>
                     <img class="TeamPhotos" src="PitPic.JPG">
                     <figcaption>Callum Sleeping</figcaption>
-                </figure><figure>
+                </figure>
+                <figure>
                     <img class="TeamPhotos" src="Match.jpg">
                     <figcaption>Callum Sleeping</figcaption>
-                </figure><figure>
+                </figure>
+                <figure>
                     <img class="TeamPhotos" src="SkoobleInArena.JPG">
                     <figcaption>Callum Sleeping</figcaption>
-                </figure><figure>
+                </figure>
+                <figure>
                     <img class="TeamPhotos" src="HannahMakingBumper.jpg">
                     <figcaption>Callum Sleeping</figcaption>
                 </figure>
             </div>
-            <br><br><br>
         </div>
-    </div>
-
     </div>
 
     <script>
@@ -519,6 +554,13 @@
                 behavior: 'smooth' // Smooth scroll
             });
         }
+        function scrollToHome() {
+            var homeTab = document.getElementById('HomeTab');
+            if (homeTab) {
+                homeTab.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
         // Show or hide back-to-top button based on scroll position
         window.addEventListener('scroll', function() {
             var button = document.querySelector('.back-to-top');
