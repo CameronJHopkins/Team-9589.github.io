@@ -114,7 +114,7 @@
         .team-logo{
             position: fixed;
             top: 25px;
-            left: 95%;
+            left: 90%;
             cursor: pointer;
             z-index: 3;
         }
@@ -218,6 +218,11 @@
             font-weight: bold;
         }
 
+        .TeamPhotos {
+            height: 200px;
+            width: 350px;
+        }
+
   </style>
   <script>
         // Event listener for when the "Team Photos" tab is clicked
@@ -302,7 +307,7 @@
     <div class="menu-button" onclick="toggleSidebar()">
         &#9776;
     </div>
-    <div class="team-logo"><img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif" height="30px" width="30px"></div>
+    <div class="team-logo"><img src="Photos/RoboticsLogo.jpg" height="35px" width="50px"></div>
     <div class="sidebar-container">
         <div class="sidebar" id="sidebar">
             <h2>Menu</h2>
@@ -318,7 +323,7 @@
             <h2>FRC Team 9589</h2>
             <p><em>This page is still under development.</em></p>
             <h3>About Us</h3>
-            <p>Located in Deep River, ON, <u><a href="https://mcs.rcdsb.on.ca/en/index.asp">MCS</a></u> is the home of the First Robotics Team 9589. <br> Founded in 2023, the MCS Innovators are existing.</p>
+                <p>Welcome to Team 9589, a passionate community of students and mentors dedicated to pushing the boundaries of innovation in robotics. Based in <a href="https://mcs.rcdsb.on.ca/en/index.asp">MCS</a> in Deep River, ON, our team thrives on collaboration, creativity, and a commitment to excellence. Together, we tackle real-world engineering challenges and inspire future leaders in STEM fields.</p>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDM2DuV_g-yYEkUCbMqTLclFwiyfwQA8X95A&s" alt="">
             <h3>Videos of us competing</h3>
             <iframe width="400" height="290" src="https://www.youtube.com/embed/s9Tbxjw5e5Q" title="Qualification 5 - 2024 ONT District North Bay Event" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>            
@@ -400,20 +405,18 @@
         </div>
         <div id="PhotoTab" style="display: none;">
             <h2>Team Photos</h2><br>
-            <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif">
-            <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif">
-            <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif">
-            <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif">
-            <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif">
-            <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif">
-            <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif">
-            <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif">
-            <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif">
-            <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif">
-            <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif">
-            <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif">
-            <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif">
-            <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif">
+            <img class="TeamPhotos" src="Photos/BlueSkoobleWithRing.jpg">
+            <img class="TeamPhotos" src="Photos/CallumCaseyCudmore.jpg">
+            <img class="TeamPhotos" src="Photos/CallumSleep.JPG">
+            <img class="TeamPhotos" src="Photos/CameronPraciceWithSkooble.JPG">
+            <img class="TeamPhotos" src="Photos/ChloeAward.jpg">
+            <img class="TeamPhotos" src="Photos/ChloePracticeWithSkooble.JPG">
+            <img class="TeamPhotos" src="Photos/TeamPhotoWithAward.jpg">
+            <img class="TeamPhotos" src="Photos/PitPic.JPG">
+            <img class="TeamPhotos" src="Photos/Match.jpg">
+            <img class="TeamPhotos" src="Photos/SkoobleInArena.JPG">
+            <img class="TeamPhotos" src="Photos/TeamPhotoArnprior.jpg">
+            <img class="TeamPhotos" src="Photos/HannahMakingBumper.jpg">
         </div>
     </div>
 
@@ -441,34 +444,28 @@
 
             var sidebarContainer = document.querySelector('.sidebar-container');
             sidebarContainer.style.marginLeft = '-200px';
-
             var contentDivs = document.querySelectorAll('.content > div');
             contentDivs.forEach(function(div) {
                 div.style.display = 'none';
             });
-
             var tabs = document.querySelectorAll('.tab');
             tabs.forEach(function(tab) {
                 tab.classList.remove('active');
             });
-
             var selectedTab = document.getElementById(tabId);
             if (selectedTab) {
                 selectedTab.style.display = 'block';
             }
-
             var clickedTab = document.getElementById(tabId + '-tab');
             if (clickedTab) {
                 clickedTab.classList.add('active');
             }
         }
-
         // Function to set default tab on page load
         document.addEventListener('DOMContentLoaded', function() {
             // Open the HomeTab by default
             openTab('HomeTab');
         });
-
         // Function to scroll to top
         function scrollToTop() {
             window.scrollTo({
@@ -476,7 +473,6 @@
                 behavior: 'smooth' // Smooth scroll
             });
         }
-
         // Show or hide back-to-top button based on scroll position
         window.addEventListener('scroll', function() {
             var button = document.querySelector('.back-to-top');
@@ -486,25 +482,19 @@
                 button.classList.remove('show');
             }
         });
-
         // Attach click event to back-to-top button
         document.querySelector('.back-to-top').addEventListener('click', function(e) {
             e.preventDefault();
             scrollToTop();
         });
-
     </script>
     <div class="back-to-top" onclick="scrollToTop()">&uarr;</div>
 </body>
 </html>
-
 <!--
     TODO
-        1. About Us
-        2. Add photos of sponsors
-        3. Add photos and descriptions of team members 
-        4. Add Social links
-        5. Add team logo
-        6. Add team photos
-        7. Update fundraising goal
+        1. Add photos of sponsors
+        2. Add photos and descriptions of team members 
+        3. Add Social links
+        4. Update fundraising goal
 -->
