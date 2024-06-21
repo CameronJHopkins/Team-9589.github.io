@@ -193,7 +193,7 @@
             color: white;
             padding: 5px 10px;
             border-radius: 5px;
-            font-size: 14px;
+            font-size: 17px;
             display: none; /* Initially hidden */
             z-index: 1;
         }
@@ -291,54 +291,60 @@
             height: 200px;
             width: 350px;
         }
-    .photo-gallery {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px; /* Adjust the gap between images */
-    }
+        .photo-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Adjust the gap between images */
+            padding: 12%;
+        }
 
-    .photo-gallery figure {
-        margin: 0; /* Remove default margins */
-        text-align: center; /* Center-align the content */
-    }
+        .photo-gallery figure {
+            margin: 0; /* Remove default margins */
+            text-align: center; /* Center-align the content */
+        }
 
-    .photo-gallery img {
-        width: 240px; /* Ensure images don't exceed their container */
-        height: 175px; /* Maintain aspect ratio */
-    }
+        .photo-gallery img {
+            width: 240px; /* Ensure images don't exceed their container */
+            height: 175px; /* Maintain aspect ratio */
+        }
 
-    .photo-gallery figcaption {
-        margin-top: 10px; /* Add space between image and caption */
-    }
-    footer {
-        position: absolute;
-        width: 100%;
-        background-color: rgba(128, 0, 128, 0.521);
-        color: white;
-        padding: 20px;
-        text-align: center;
-        z-index: 100;
-        bottom: -250%;
-    }
-    .footer-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+        .photo-gallery figcaption {
+            margin-top: 10px; /* Add space between image and caption */
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(128, 0, 128, 0.521);
+            color: #fff;
+            text-align: center;
+            z-index: 999;
+        }
 
-    .footer-photos img {
-        width: 100px; /* Adjust size as needed */
-        margin-right: 10px;
-    }
+        .footer-content {
+            padding: 10px;
+        }
 
-    .footer-links a {
-        color: white;
-        text-decoration: none;
-    }
+        footer nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
 
-    .footer-links a:hover {
-        text-decoration: underline;
-    }
+        footer nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        footer nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer nav ul li:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
 
   </style>
   <script>
@@ -434,6 +440,7 @@
     </script>
 </head>
 <body>
+    <div class="wrapper">
     <div class="menu-button" onclick="toggleSidebar()">
         &#9776;
     </div>
@@ -607,10 +614,11 @@
                                 <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" width="250px"><br><br><br><br><br><br>
                             </div>
                             <em>Interested in sponsoring our team? Contact us <a href="#" onclick="openTab('ContactTab')">here</a>.</em><br><br><br>
-            </p>
+                    </p>
+    </div>
         </div>
         <div id="PhotoTab" style="display: none;">
-            <h2>Team Photos</h2><br>
+            <h2 align="center">Team Photos</h2><br>
             <div class="photo-gallery">
                 <figure>
                     <img class="TeamPhotos" src="BlueSkoobleWithRing.jpg">
@@ -659,21 +667,20 @@
             </div>
         </div>
     </div>
-    <footer class="footer">
+    <footer>
         <div class="footer-content">
-            <div class="footer-photos">
-                <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif" alt="Footer Photo 1">
-                <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif" alt="Footer Photo 2">
-            </div>
-            <div class="footer-links">
-                <a href="#">Home</div></a>
-                <a href="#">Members</div></a>
-                <a href="#"> Sponsors</div></a>
-                <a href="#">Team Photos</div></a>
-                <a href="#">Contact Us</div></a>
-            </div>
+            <nav>
+                <ul>
+                    <li onclick="openTab('HomeTab')">Home<li>
+                    <li onclick="openTab('MembersTab')">Our Team</li>
+                    <li onclick="openTab('SponsorTab')">Our Sponsors</li>
+                    <li onclick="openTab('PhotoTab')">Team Photos</li>
+                    <li onclick="openTab('ContactTab')">Contacts</li>
+                </ul>
+            </nav>
         </div>
-    </footer>   
+    </footer>    
+    </div>
     <script>
         // Function to toggle sidebar visibility
         function toggleSidebar() {
