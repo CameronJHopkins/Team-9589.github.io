@@ -147,6 +147,13 @@
             z-index: 3;
         }
 
+        .MoneyBreakdown{
+            position: relative;
+            font-size: medium;
+            font-style:italic;
+            bottom:2%;
+        }
+
         .team-logo{
             position: fixed;
             top: 25px;
@@ -182,17 +189,18 @@
             position: absolute;
             top: 50%;
             left: calc(50% - 200px); 
-            background-color: rgba(219, 15, 238, 0.635);
-            color: rgb(246, 218, 7);
+            background-color: rgba(219, 15, 238);
+            color: rgba(100, 100, 100, 1000);
             padding: 5px 10px;
             border-radius: 5px;
             font-size: 14px;
             display: none; /* Initially hidden */
+            z-index: 1;
         }
 
         #thermometer:hover .tooltip {
             display: block; /* Show on hover */
-            filter: brightness(-100%);
+            filter:brightness(100%);
         }
 
         .back-to-top:hover{
@@ -380,6 +388,19 @@
             e.preventDefault();
             scrollToTop();
         });
+        function toggleMoneyText() {
+            var moneyText = document.getElementById('money-text');
+            var moneyDetails = document.getElementById('MoneyBreakdownDropbox');
+            var toggleLink = document.getElementById('toggle-link');
+
+            if (moneyDetails.style.display === 'none') {
+                moneyDetails.style.display = 'block';
+                toggleLink.textContent = 'Hide Details';
+            } else {
+                moneyDetails.style.display = 'none';
+                toggleLink.textContent = 'Show Details';
+            }
+        }
         
     </script>
 </head>
@@ -425,10 +446,21 @@
                 <div id="graduation-25" class="graduation">25%</div>    
                 <div id="bulb"></div>
                 <div id="progress"></div>
-                <div id="tooltip" class="tooltip">Current fundraising total: $5</div>
+                <div id="tooltip" class= "tooltip">Current fundraising total: $5</div>
             </div>
             <br><br>
             <p>Fundraising Goal Progress: 50%</p><br><br>
+            <div id="MoneyBreakdown">
+                <span id="money-text">2024-25 Fundraising Plan: </span>
+                <div id="MoneyBreakdownDropbox" style="display: none;"><br>
+                    Here is where our fundraising efforts go towards:<br><br><br>
+                    <strong>Registration:</strong> $8000
+                    <br><br>
+                    <strong>Transportation:</strong> $1500
+                    <br><br>
+                </div>
+                <a href="#" id="toggle-link" onclick="toggleMoneyText(); return false;">Show Details</a><br><br><br>
+            </div>
             </div>
         <div id="MembersTab" style="display: none;">
             <h2>Our Team</h2>
@@ -468,9 +500,9 @@
                    To report an issue with this webpage: <em>cameronh344728@gmail.com</em><br><br><br>  
             </p>
             <h2><u>Socials:</u></h2>
-            <p>Instagram: <em>Instagram</em><br><br>
-                    Facebook: <em>facebook</em><br><br>
-                    X: <em>Twitter</em>
+            <p>Instagram: <em><a href="https://www.instagram.com/team_9589/">@team_9589></em></a><br><br>
+                    Facebook: <em><a href="https://www.facebook.com/profile.php?id=61561495672784">Skooble FRC</a></em><br><br>
+                    X: <em><a href="https://x.com/9589_frc">@9589_frc</a></em>
                     <br><br><br>
                 </p>
         </div>
@@ -676,7 +708,7 @@
 </html>
 <!--
     TODO
-        1. Add photos of sponsors
+        1. Add photos and descriptions of sponsors
         2. Add photos and descriptions of team members 
         3. Add Social links
         4. Update fundraising goal
