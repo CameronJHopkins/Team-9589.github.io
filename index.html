@@ -67,6 +67,42 @@
             text-align: center;
         }
 
+        .sponsor {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: medium;
+        }
+
+        .sponsor img {
+            margin-right: 20px;
+        }
+
+        .sponsor .sponsor-info {
+            flex: 1;
+        }
+
+        .sponsor h4 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .sponsor p {
+            margin-bottom: 0;
+            font-size: medium;
+            color: #666;
+        }
+
+        .sponsor.alternate {
+            flex-direction: row; /* Reverse direction for alternate sponsors */
+        }
+
+        .sponsor.alternate img {
+            margin-left: 0px;
+        }
+
         .team-member {
             display: flex;
             align-items: center;
@@ -438,18 +474,77 @@
                     <br><br><br>
                 </p>
         </div>
-        <div id="SponsorTab" style="display: none;">
+        <div id="SponsorTab" style="display: none;"
             <h2>Our Sponsors</h2>
             <p class="Sponsor-levels">
-                <strong>Gold Sponsors</strong><br><br>
-                <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" width="250px"><br><br><br><br><br><br>
-                <strong>Silver Sponsors</strong><br><br>
-                <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" width="250px"><br><br><br><br><br><br>
-                <strong>Bronze Sponsors</strong><br><br>
-                <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" width="250px"><br><br><br><br><br><br>
-                <strong>Donors</strong><br><br>
-                <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" width="250px"><br><br><br><br><br><br>
-                <em>Interested in sponsoring our team? Contact us <a href="#" onclick="openTab('ContactTab')">here</a>.</em><br><br><br>
+                <strong>Gold Sponsors</strong><br><br></p>
+                <div class="sponsor">
+                    <div class="sponsor-info">
+                    <h4>Sponsor Name</h4>
+                    <p>Description of Sponsor</p>
+                    </div>
+                    <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" width="250px"><br><br><br><br><br><br>
+                    <br>
+                </div>
+                <div class="sponsor">
+                    <div class="sponsor-info">
+                    <h4>Sponsor Name</h4>
+                    <p>Description of Sponsor</p>
+                    </div>
+                    <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" width="250px"><br><br><br><br><br><br>
+                </div>
+                <p class="Sponsor-levels">
+                    <strong>Silver Sponsors</strong><br><br></p>
+                    <div class="sponsor">
+                        <div class="sponsor-info">
+                        <h4>Sponsor Name</h4>
+                        <p>Description of Sponsor</p>
+                        </div>
+                        <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" width="250px"><br><br><br><br><br><br>
+                        <br>
+                    </div>
+                    <div class="sponsor">
+                        <div class="sponsor-info">
+                        <h4>Sponsor Name</h4>
+                        <p>Description of Sponsor</p>
+                        </div>
+                        <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" width="250px"><br><br><br><br><br><br>
+                    </div>
+                    <p class="Sponsor-levels">
+                        <strong>Bronze Sponsors</strong><br><br></p>
+                        <div class="sponsor">
+                            <div class="sponsor-info">
+                            <h4>Sponsor Name</h4>
+                            <p>Description of Sponsor</p>
+                            </div>
+                            <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" width="250px"><br><br><br><br><br><br>
+                            <br>
+                        </div>
+                        <div class="sponsor">
+                            <div class="sponsor-info">
+                            <h4>Sponsor Name</h4>
+                            <p>Description of Sponsor</p>
+                            </div>
+                            <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" width="250px"><br><br><br><br><br><br>
+                        </div>
+                        <p class="Sponsor-levels">
+                            <strong>Donors</strong><br><br></p>
+                            <div class="sponsor">
+                                <div class="sponsor-info">
+                                <h4>Sponsor Name</h4>
+                                <p>Description of Sponsor</p>
+                                </div>
+                                <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" width="250px"><br><br><br><br><br><br>
+                                <br>
+                            </div>
+                            <div class="sponsor">
+                                <div class="sponsor-info">
+                                <h4>Sponsor Name</h4>
+                                <p>Description of Sponsor</p>
+                                </div>
+                                <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" width="250px"><br><br><br><br><br><br>
+                            </div>
+                            <em>Interested in sponsoring our team? Contact us <a href="#" onclick="openTab('ContactTab')">here</a>.</em><br><br><br>
             </p>
         </div>
         <div id="PhotoTab" style="display: none;">
