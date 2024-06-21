@@ -222,7 +222,25 @@
             height: 200px;
             width: 350px;
         }
+    .photo-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px; /* Adjust the gap between images */
+    }
 
+    .photo-gallery figure {
+        margin: 0; /* Remove default margins */
+        text-align: center; /* Center-align the content */
+    }
+
+    .photo-gallery img {
+        width: 350px; /* Ensure images don't exceed their container */
+        height: 200px; /* Maintain aspect ratio */
+    }
+
+    .photo-gallery figcaption {
+        margin-top: 10px; /* Add space between image and caption */
+    }
   </style>
   <script>
         // Event listener for when the "Team Photos" tab is clicked
@@ -405,18 +423,46 @@
         </div>
         <div id="PhotoTab" style="display: none;">
             <h2>Team Photos</h2><br>
-            <img class="TeamPhotos" src="BlueSkoobleWithRing.jpg">
-            <img class="TeamPhotos" src="CallumCaseyCudmore.jpg">
-            <img class="TeamPhotos" src="CallumSleep.JPG">
-            <img class="TeamPhotos" src="CameronPraciceWithSkooble.JPG">
-            <img class="TeamPhotos" src="ChloeAward.jpg">
-            <img class="TeamPhotos" src="ChloePracticeWithSkooble.JPG">
-            <img class="TeamPhotos" src="TeamPhotoWithAward.jpg">
-            <img class="TeamPhotos" src="PitPic.JPG">
-            <img class="TeamPhotos" src="Match.jpg">
-            <img class="TeamPhotos" src="SkoobleInArena.JPG">
-            <img class="TeamPhotos" src="TeamPhotoArnprior.jpg">
-            <img class="TeamPhotos" src="HannahMakingBumper.jpg">
+            <div class="photo-gallery">
+                <figure>
+                    <img class="TeamPhotos" src="BlueSkoobleWithRing.jpg">
+                    <figcaption>Blue Skooble with Ring</figcaption>
+                </figure>
+                <figure>
+                    <img class="TeamPhotos" src="CallumCaseyCudmore.jpg">
+                    <figcaption>Callum Casey Cudmore</figcaption>
+                </figure>
+                <figure>
+                    <img class="TeamPhotos" src="CallumSleep.JPG">
+                    <figcaption>Callum Sleeping</figcaption>
+                </figure>
+                <figure>
+                    <img class="TeamPhotos" src="CameronPraciceWithSkooble.JPG">
+                    <figcaption>Callum Sleeping</figcaption>
+                </figure><figure>
+                    <img class="TeamPhotos" src="ChloeAward.jpg">
+                    <figcaption>Callum Sleeping</figcaption>
+                </figure><figure>
+                    <img class="TeamPhotos" src="TeamPhotoWithAward.jpg">
+                    <figcaption>Callum Sleeping</figcaption>
+                </figure><figure>
+                    <img class="TeamPhotos" src="TeamPhotoArnprior.jpg">
+                    <figcaption>Callum Sleeping</figcaption>
+                </figure><figure>
+                    <img class="TeamPhotos" src="PitPic.JPG">
+                    <figcaption>Callum Sleeping</figcaption>
+                </figure><figure>
+                    <img class="TeamPhotos" src="Match.jpg">
+                    <figcaption>Callum Sleeping</figcaption>
+                </figure><figure>
+                    <img class="TeamPhotos" src="SkoobleInArena.JPG">
+                    <figcaption>Callum Sleeping</figcaption>
+                </figure><figure>
+                    <img class="TeamPhotos" src="HannahMakingBumper.jpg">
+                    <figcaption>Callum Sleeping</figcaption>
+                </figure>
+            </div>
+            <br><br><br>
         </div>
     </div>
 
@@ -497,4 +543,5 @@
         2. Add photos and descriptions of team members 
         3. Add Social links
         4. Update fundraising goal
+        5. Caption team photos
 -->
