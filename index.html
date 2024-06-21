@@ -13,7 +13,7 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            padding: 0;
+            padding-bottom: 20px;
             font-size: x-large;
             overflow-x: hidden;
             position: relative; /* Ensure body is relative for absolute positioning of back-to-top button */
@@ -62,7 +62,7 @@
 
         /* Content area styling */
         .content {
-            margin-left: 150px; /* Adjust according to sidebar width */
+            margin-left: 0px; /* Adjust according to sidebar width */
             padding: 20px;
             text-align: center;
         }
@@ -291,6 +291,7 @@
             height: 200px;
             width: 350px;
         }
+
         .photo-gallery {
             display: flex;
             flex-wrap: wrap;
@@ -311,29 +312,43 @@
         .photo-gallery figcaption {
             margin-top: 10px; /* Add space between image and caption */
         }
+        
         footer {
-            position: fixed;
+            position: relative;
             bottom: 0;
             width: 100%;
             background-color: rgba(128, 0, 128, 0.521);
             color: #fff;
             text-align: center;
             z-index: 999;
+            display: flex;
+            align-items: center;
+            left: 0%;
+            justify-content: center;
+            margin-top: 10px; /* Adjust as needed to create space between content and footer */
         }
 
         .footer-content {
-            padding: 10px;
+            padding: 0px;
+            display: flex;
+            align-items: center;
         }
 
         footer nav ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
+            display: flex;
+            align-items: center; /* Center vertically with image */
+        }
+        footer img{
+            margin: 0 10px;
+            height: 100px;
         }
 
         footer nav ul li {
-            display: inline;
-            margin-right: 10px;
+            margin-top: 0;
+            margin-right: 15px;
         }
 
         footer nav ul li a {
@@ -566,10 +581,10 @@
                     <strong>Silver Sponsors</strong><br><br></p>
                     <div class="sponsor">
                         <div class="sponsor-info">
-                        <h4>Sponsor Name</h4>
+                        <h4>Bubble Technologies Industries</h4>
                         <p>Description of Sponsor</p>
                         </div>
-                        <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" height="250px" width="250px"><br><br><br><br><br><br>
+                        <img src="BTI.png" height="250px" width="250px"><br><br><br><br><br><br>
                         <br>
                     </div>
                     <div class="sponsor">
@@ -615,7 +630,6 @@
                             </div>
                             <em>Interested in sponsoring our team? Contact us <a href="#" onclick="openTab('ContactTab')">here</a>.</em><br><br><br>
                     </p>
-    </div>
         </div>
         <div id="PhotoTab" style="display: none;">
             <h2 align="center">Team Photos</h2><br>
@@ -671,11 +685,13 @@
         <div class="footer-content">
             <nav>
                 <ul>
-                    <li onclick="openTab('HomeTab')">Home<li>
-                    <li onclick="openTab('MembersTab')">Our Team</li>
-                    <li onclick="openTab('SponsorTab')">Our Sponsors</li>
-                    <li onclick="openTab('PhotoTab')">Team Photos</li>
-                    <li onclick="openTab('ContactTab')">Contacts</li>
+                    <img src="BTI.png" alt="BTI">
+                    <img src="BTI.png" alt="BTI">
+                    <img src="BTI.png" alt="BTI">
+                    <img src="BTI.png" alt="BTI">
+                    <img src="BTI.png" alt="BTI">
+                    <img src="BTI.png" alt="BTI">
+                    <img src="BTI.png" alt="BTI">
                 </ul>
             </nav>
         </div>
