@@ -18,6 +18,56 @@
             position: relative; /* Ensure body is relative for absolute positioning of back-to-top button */
         }
 
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .enlargeable {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.2s ease-in-out;
+            cursor: pointer;
+        }
+
+        .enlarged {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 999;
+            cursor: zoom-out;
+            object-fit: contain; /* Maintain aspect ratio */
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+        }
+
+        .photo-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center; /* Center-align the gallery */
+            padding: 20px; /* Add padding for spacing */
+        }
+
+        .TeamPhotos {
+            width: 240px;
+            height: 175px;
+            object-fit: cover; /* Ensure images cover their container */
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .TeamPhotos:hover {
+            transform: scale(1.1); /* Add slight zoom on hover */
+        }
+
+        figcaption {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+
         /* Sidebar styling */
         .sidebar-container {
             position: fixed;
@@ -288,18 +338,6 @@
             font-weight: bold;
         }
 
-        .TeamPhotos {
-            height: 200px;
-            width: 350px;
-        }
-
-        .photo-gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px; /* Adjust the gap between images */
-            padding: 12%;
-        }
-
         .photo-gallery figure {
             margin: 0; /* Remove default margins */
             text-align: center; /* Center-align the content */
@@ -451,11 +489,22 @@
                 toggleLink.textContent = 'Show Details';
             }
         }
-        
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.TeamPhotos');
+
+            images.forEach(img => {
+                img.addEventListener('click', function() {
+                    img.classList.toggle('enlarged');
+                });
+            });
+        });
+
+
     </script>
 </head>
 <body>
     <div class="wrapper">
+        <div class="image-container">
     <div class="menu-button" onclick="toggleSidebar()">
         &#9776;
     </div>
@@ -480,7 +529,9 @@
             <p><em>This page is still under development.</em></p>
             <h3>About Us</h3>
                 <p>Welcome to Team 9589, a passionate community of students and mentors dedicated to pushing the boundaries of innovation in robotics. Based in <a href="https://mcs.rcdsb.on.ca/en/index.asp">MCS</a> in Deep River, ON, our team thrives on collaboration, creativity, and a commitment to excellence. Together, we tackle real-world engineering challenges and inspire future leaders to pursue careers in technology/engineering, computer science, and business.</p>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDM2DuV_g-yYEkUCbMqTLclFwiyfwQA8X95A&s" alt="">
+            <div class="image-container">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDM2DuV_g-yYEkUCbMqTLclFwiyfwQA8X95A&s" alt="" class="enlargeable">
+           </div>
             <h3>Videos of us competing</h3>
             <iframe width="400" height="290" src="https://www.youtube.com/embed/s9Tbxjw5e5Q" title="Qualification 5 - 2024 ONT District North Bay Event" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>            
             <iframe width="400" height="290" src="https://www.youtube.com/embed/bllGxQgzRp8" title="Qualification 10 - 2024 ONT District North Bay Event - Full Field View" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>            
@@ -517,28 +568,28 @@
         <div id="MembersTab" style="display: none;">
             <h2>Our Team</h2>
             <div class="team-member">
-                <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif" alt="Person 1">
+                <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif" alt="Person 1" class="enlargeable">
                 <div class="member-info">
                     <h3>Name of Person 1</h3>
                     <p>Description or role of Person 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
             </div>
             <div class="team-member alternate">
-                <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif" alt="Person 2">
+                <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif" alt="Person 2"class="enlargeable">
                 <div class="member-info">
                     <h3>Name of Person 2</h3>
                     <p>Description or role of Person 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
             </div>
             <div class="team-member">
-                <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif" alt="Person 3">
+                <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif" alt="Person 3"class="enlargeable">
                 <div class="member-info">
                     <h3>Name of Person 3</h3>
                     <p>Description or role of Person 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
             </div>
             <div class="team-member alternate">
-                <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif" alt="Person 4">
+                <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif" alt="Person 4"class="enlargeable">
                 <div class="member-info">
                     <h3>Name of Person 4</h3>
                     <p>Description or role of Person 4. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -567,7 +618,7 @@
                     <h4>Renfrew County District School Board</h4>
                     <p> The Renfrew County District School Board (RCDSB) educates over 10,000 students in 28 schools and is the third largest employer in the county. They celebrate the unique contributions of each individual, and cultivate an environment that values imagination and innovation. To learn more, visit their <a href="https://www.rcdsb.on.ca/en/index.aspx">website</a>.</p>
                     </div>
-                    <img src="rcdsb.png" height="150px" width="250px"><br><br><br><br><br><br>
+                    <img src="rcdsb.png" height="150px" width="250px"class="enlargeable"><br><br><br><br><br><br>
                     <br>
                 </div>  
                 <p class="Sponsor-levels">
@@ -577,7 +628,7 @@
                         <h4>Bubble Technologies Industries</h4>
                         <p>Located in Chalk River, Canada, BTI is a technology firm that provides advanced commercial, homeland security, and defence solutions in radiation, explosives, and contraband detection. Systems developed by BTI have flown on more than twenty space missions and the company’s technology has been used around the world by groups including the Canadian Department of National Defence, US Department of Defense, US Department of Homeland Security, US Department of Energy, NATO forces, the International Atomic Energy Agency (IAEA), and law enforcement/national security agencies. Founded in 1988, the company has a highly-skilled staff of over 50 people with expertise in physics, chemistry, electronics, mechanical design, software/algorithm development, and manufacturing. The company is internationally recognized for its innovative solutions for some of the world’s most complex radiation-related applications. For more, visit their <a href="https://www.bubbletech.ca/">website</a>.</p>
                         </div>
-                        <img src="BTI.png" height="250px" width="250px"><br><br><br><br><br><br>
+                        <img src="BTI.png" height="250px" width="250px"class="enlargeable"><br><br><br><br><br><br>
                         <br>
                     </div>
                     <p class="Sponsor-levels">
@@ -587,7 +638,7 @@
                             <h4>Canadian Nuclear Laboratories </h4>
                             <p>CNL is Canada’s premier nuclear science and technology organization, and a world leader in developing nuclear technology for peaceful and innovative applications.  Using their unique expertise, they are restoring and protecting the environment, they are advancing clean energy technology, and their medical breakthroughs continue to improve the health of people around the world.  For more, visit their <a href=https://www.cnl.ca>website</a>.</p>
                             </div>  
-                            <img src="cnl.png" height="150" width="280px"><br><br><br><br><br><br>
+                            <img src="cnl.png" height="150" width="280px"class="enlargeable"><br><br><br><br><br><br>
                             <br>
                         </div>
                         <p class="Sponsor-levels">
@@ -596,7 +647,7 @@
                                 <div class="sponsor-info">
                                 <h4>Christian Kaiser</h4>
                                 </div>
-                                <img src="hotguy.jpeg" height="250px" width="250px"><br><br><br><br><br><br>
+                                <img src="hotguy.jpeg" height="250px" width="250px"class="enlargeable"><br><br><br><br><br><br>
                                 <br>
                             </div>
                             <em>Interested in sponsoring our team? Contact us <a href="#" onclick="openTab('ContactTab')">here</a>.</em><br><br><br>
@@ -606,47 +657,43 @@
             <h2 align="center">Team Photos</h2><br>
             <div class="photo-gallery">
                 <figure>
-                    <img class="TeamPhotos" src="BlueSkoobleWithRing.jpg">
+                    <img class="TeamPhotos" src="BlueSkoobleWithRing.jpg"class="enlargeable">
                     <figcaption>Blue Skooble with Ring</figcaption>
                 </figure>
                 <figure>
-                    <img class="TeamPhotos" src="CallumCaseyCudmore.jpg">
+                    <img class="TeamPhotos" src="CallumCaseyCudmore.jpg"class="enlargeable">
                     <figcaption>Callum Casey Cudmore</figcaption>
                 </figure>
                 <figure>
-                    <img class="TeamPhotos" src="CallumSleep.JPG">
+                    <img class="TeamPhotos" src="CameronPraciceWithSkooble.JPG"class="enlargeable">
                     <figcaption>Callum Sleeping</figcaption>
                 </figure>
                 <figure>
-                    <img class="TeamPhotos" src="CameronPraciceWithSkooble.JPG">
+                    <img class="TeamPhotos" src="ChloeAward.jpg"class="enlargeable">
                     <figcaption>Callum Sleeping</figcaption>
                 </figure>
                 <figure>
-                    <img class="TeamPhotos" src="ChloeAward.jpg">
+                    <img class="TeamPhotos" src="TeamPhotoWithAward.jpg"class="enlargeable">
                     <figcaption>Callum Sleeping</figcaption>
                 </figure>
                 <figure>
-                    <img class="TeamPhotos" src="TeamPhotoWithAward.jpg">
+                    <img class="TeamPhotos" src="TeamPhotoArnprior.jpg"class="enlargeable">
                     <figcaption>Callum Sleeping</figcaption>
                 </figure>
                 <figure>
-                    <img class="TeamPhotos" src="TeamPhotoArnprior.jpg">
+                    <img class="TeamPhotos" src="PitPic.JPG"class="enlargeable">
                     <figcaption>Callum Sleeping</figcaption>
                 </figure>
                 <figure>
-                    <img class="TeamPhotos" src="PitPic.JPG">
+                    <img class="TeamPhotos" src="Match.jpg"class="enlargeable">
                     <figcaption>Callum Sleeping</figcaption>
                 </figure>
                 <figure>
-                    <img class="TeamPhotos" src="Match.jpg">
-                    <figcaption>Callum Sleeping</figcaption>
+                    <img class="TeamPhotos" src="SkoobleInArena.JPG"class="enlargeable">
+                    <figcaption>Skooble In The Ring</figcaption>
                 </figure>
                 <figure>
-                    <img class="TeamPhotos" src="SkoobleInArena.JPG">
-                    <figcaption>Callum Sleeping</figcaption>
-                </figure>
-                <figure>
-                    <img class="TeamPhotos" src="HannahMakingBumper.jpg">
+                    <img class="TeamPhotos" src="HannahMakingBumper.jpg"class="enlargeable">
                     <figcaption>Callum Sleeping</figcaption>
                 </figure>
             </div>
@@ -656,13 +703,14 @@
         <div class="footer-content">
             <nav>
                 <ul>
-                    <img src="BTI.png" alt="BTI" height="190px" width="300px">
-                    <img src="rcdsb.png" alt="RCDSB" height="100px" width="300px">
-                    <img src="cnl.png" alt="CNL"width="300px">
+                    <img src="BTI.png" alt="BTI" height="190px" width="300px"class="enlargeable">
+                    <img src="rcdsb.png" alt="RCDSB" height="100px" width="300px"class="enlargeable">
+                    <img src="cnl.png" alt="CNL"width="300px"class="enlargeable">
                 </ul>
             </nav>
         </div>
     </footer>    
+    </div>
     </div>
     <script>
         // Function to toggle sidebar visibility
