@@ -16,6 +16,7 @@
             font-size: x-large;
             overflow-x: hidden;
             position: relative; /* Ensure body is relative for absolute positioning of back-to-top button */
+        
         }
 
         .image-container {
@@ -111,7 +112,7 @@
 
         /* Content area styling */
         .content {
-            /* margin-left: 100px; /*Adjust according to sidebar width */
+            margin-left: 100px; /*Adjust according to sidebar width */
             padding: 20px;
             margin-right: 20px;
             text-align: center;
@@ -239,12 +240,12 @@
         .tooltip {
             position: absolute;
             top: 50%;
-            left: calc(50% - 260px); 
+            left: calc(50% - 400px); 
             background-color: transparent;
             color: white;
             padding: 5px 10px;
             border-radius: 5px;
-            font-size: 17px;
+            font-size: 30px;
             display: none; /* Initially hidden */
             z-index: 1;
         }
@@ -264,7 +265,7 @@
         /* Thermometer styling */
         #thermometer {
             margin: 20px auto; /* Adjust margin as needed */
-            width: 30px; /* Adjust width as needed */
+            width: 40px; /* Adjust width as needed */
             height: 300px; /* Adjust height as needed */
             position: relative;
             border: 2px solid rgb(143, 137, 137);
@@ -278,20 +279,20 @@
         }
 
         #progress {
-            width: 30px;
-            height: 50%;
+            width: 40px;
+            height: 38%;
             background-color: #ff2600; /* Progress bar color */
             position: absolute;
             border-radius: 50px 50px 0 0 ; /* Rounded top corners */
             margin:20px auto;
-            top: 40%;
+            top: 55%;
             z-index: 1;
         }
 
         .graduation {
             position: absolute;
             top: calc(100% - var(--graduation-position));
-            left: 40px; /* Adjust the distance from the thermometer */
+            left: 60px; /* Adjust the distance from the thermometer */
             transform: translateY(-50%);
             font-size: 1rem;
             font-weight: bold;
@@ -320,8 +321,8 @@
         }
 
         #bulb {
-            width: 50px; /* Adjust size of bulb */
-            height: 50px; /* Adjust size of bulb */
+            width: 70px; /* Adjust size of bulb */
+            height: 70px; /* Adjust size of bulb */
             background-color: #ff2600; /* Color of the bulb */
             border: 3px solid rgb(143, 137, 137);
             position: absolute;
@@ -546,10 +547,10 @@
                 <div id="graduation-25" class="graduation">25%</div>    
                 <div id="bulb"></div>
                 <div id="progress"></div>
-                <div id="tooltip" class= "tooltip">Current fundraising total: $5000</div>
+                <div id="tooltip" class= "tooltip">Current Fundraising Total: $5500</div>
             </div>
             <br><br>
-            <p>Fundraising Goal Progress: 50%</p><br><br>
+            <p>Fundraising Goal Progress: 38%</p><br><br>
             <div id="MoneyBreakdown">
                 <span id="money-text">2024-25 Fundraising Plan: </span>
                 <div id="MoneyBreakdownDropbox" style="display: none;"><br>
@@ -801,6 +802,5 @@
     TODO
         1. Add photos and descriptions of sponsors
         2. Add photos and descriptions of team members 
-        4. Update fundraising goal
-        5. Caption team photos
+        3. Caption team photos
 -->
