@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FRC Team 9589: The MCS Skoobles</title>
+
+
+
+
     <style>
-        /* General body styling */
+        /*For PC/Desktop*/
+    @media (min-width: 4px){
+/* General body styling */
         body {
             background-color: #FFEFC1;
             font-family: 'Times New Roman', Times, serif;
@@ -113,7 +119,7 @@
         /* Content area styling */
         .content {
             margin-left: calc(50%+100px); /*Adjust according to sidebar width */
-            padding: 20px;
+            padding: 60px;
             margin-right: 20px;
             text-align: center;
         }
@@ -122,7 +128,7 @@
             display: flex;
             align-items: center;
             margin-bottom: 20px;
-            padding: 10px;
+            padding: 0px;
             font-size: medium;
         }
 
@@ -132,7 +138,7 @@
 
         .sponsor .sponsor-info {
             flex: 1;
-            margin: 100px;
+            margin: 10px;
         }
 
         .sponsor h4 {
@@ -156,11 +162,11 @@
         }
 
         .team-member {
-            left: 50%; /*Adjust according to sidebar width */
             display: flex;
             align-items: center;
             margin-bottom: 20px;
             padding: 10px;
+            justify-content: center; /* Center align the team member containers */
         }
 
         .team-member img {
@@ -170,6 +176,7 @@
 
         .team-member .member-info {
             flex: 1;
+            text-align: center; /* Center align the text */
         }
 
         .team-member.alternate {
@@ -177,32 +184,29 @@
         }
 
         .team-member.alternate img {
-
             margin-left: 20px;
         }
 
         .team-member h3 {
-            left: 50%;
             margin-top: 0;
             font-size: 1.2rem;
             color: #333;
         }
 
         .team-member p {
-            left: 50%;
             margin-bottom: 0;
             font-size: 1rem;
             color: #666;
         }
 
-        #MembersTab{
+        #MembersTab {
             position: relative;
-            left: calc(50% - 150px);
+            text-align: center; /* Center align the MembersTab content */
         }
 
         #ContactTab{
             position: relative;
-            left: calc(50% - 120px);
+            text-align: center;
         }
 
         .menu-button {
@@ -414,108 +418,853 @@
             cursor: pointer;
         }
 
+        .SocialLogos{
+            height: 20px;
+            width: 20px;
+            position: relative;
+        }
+    }
+
+
+        /* For Tablets */
+@media (min-width: 2px) and (max-width: 3px) {
+    body {
+        background-color: #FFEFC1;
+        font-family: 'Times New Roman', Times, serif;
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        padding-bottom: 20px;
+        font-size: large;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    .image-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .enlargeable {
+        max-width: 100%;
+        height: auto;
+        transition: transform 0.2s ease-in-out;
+        cursor: pointer;
+    }
+
+    .enlarged {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 999;
+        cursor: zoom-out;
+        object-fit: contain;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .photo-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+        padding: 15px;
+    }
+
+    .TeamPhotos {
+        width: 180px;
+        height: 130px;
+        object-fit: cover;
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .enlargeable:hover {
+        transform: scale(1.1);
+    }
+
+    figcaption {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .sidebar-container {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        z-index: 1;
+        transition: margin-left 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        margin-left: -200px;
+    }
+
+    .sidebar {
+        width: 150px;
+        height: 100%;
+        background-color: rgba(128, 0, 128, 0.521);
+        padding: 20px;
+        box-shadow: 0 0 10px hsla(60, 20%, 99%, 0.1);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar h2 {
+        margin-top: 0;
+        font-size: 1.8rem;
+        text-align: center;
+        color: white;
+    }
+
+    .tab {
+        margin-bottom: 10px;
+        cursor: pointer;
+        color: white;
+        font-size: 1.3rem;
+        text-align: center;
+    }
+
+    .tab.active {
+        font-weight: bold;
+        color: blue;
+    }
+
+    .content {
+        left: 50%;
+        margin-left: calc(50% + 75px);
+        padding: 15px;
+        margin-right: 15px;
+        text-align: center;
+    }
+
+    .sponsor {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        padding: 10px;
+        font-size: medium;
+    }
+
+    .sponsor img {
+        margin-right: 15px;
+    }
+
+    .sponsor .sponsor-info {
+        flex: 1;
+        margin: 75px;
+    }
+
+    .sponsor h4 {
+        margin-top: 0;
+        font-size: 1rem;
+        color: #333;
+    }
+
+    .sponsor p {
+        margin-bottom: 0;
+        font-size: small;
+        color: #666;
+    }
+
+    .sponsor.alternate {
+        flex-direction: row;
+    }
+
+    .sponsor.alternate img {
+        margin-left: 0px;
+    }
+
+    .team-member {
+        left: 50%;
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        padding: 10px;
+    }
+
+    .team-member img {
+        max-width: 120px;
+        margin-right: 15px;
+    }
+
+    .team-member .member-info {
+        flex: 1;
+    }
+
+    .team-member.alternate {
+        flex-direction: row-reverse;
+    }
+
+    .team-member.alternate img {
+        margin-left: 15px;
+    }
+
+    .team-member h3 {
+        left: 50%;
+        margin-top: 0;
+        font-size: 1rem;
+        color: #333;
+    }
+
+    .team-member p {
+        left: 50%;
+        margin-bottom: 0;
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    #MembersTab {
+        position: relative;
+        left: calc(50% - 120px);
+    }
+
+    #ContactTab {
+        position: relative;
+        left: calc(50% - 90px);
+    }
+
+    .menu-button {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        cursor: pointer;
+        z-index: 3;
+    }
+
+    .MoneyBreakdown {
+        position: relative;
+        font-size: small;
+        font-style: italic;
+        bottom: 2%;
+    }
+
+    .team-logo {
+        position: fixed;
+        top: 25px;
+        left: 90%;
+        cursor: pointer;
+        z-index: 3;
+    }
+
+    .team-logo img:hover {
+        filter: brightness(50%);
+    }
+
+    .Sponsor-levels {
+        font-size: x-large;
+    }
+
+    .back-to-top {
+        position: fixed;
+        bottom: 15%;
+        right: 20px;
+        cursor: pointer;
+        z-index: 2;
+        background-color: #007bff;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        font-size: 1.5rem;
+        display: none;
+    }
+
+    .tooltip {
+        position: absolute;
+        top: 50%;
+        left: calc(50% - 200px);
+        background-color: transparent;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 20px;
+        display: none;
+        z-index: 1;
+    }
+
+    #thermometer:hover .tooltip {
+        display: block;
+    }
+
+    .back-to-top:hover {
+        background-color: #001aff;
+    }
+
+    .back-to-top.show {
+        display: block;
+    }
+
+    #thermometer {
+        margin: 20px auto;
+        width: 40px;
+        height: 300px;
+        position: relative;
+        border: 2px solid rgb(143, 137, 137);
+        z-index: 3;
+        border-radius: 50px 50px 0 0;
+        background-color: #ccc;
+    }
+
+    #thermometer:hover {
+        filter: brightness(50%);
+    }
+
+    #progress {
+        width: 40px;
+        height: 38%;
+        background: linear-gradient(to top, #b10505, #fc4c4c);
+        position: absolute;
+        border-radius: 50px 50px 0 0;
+        margin: 20px auto;
+        top: 55%;
+        z-index: 1;
+    }
+
+    .graduation {
+        position: absolute;
+        top: calc(100% - var(--graduation-position));
+        left: 60px;
+        transform: translateY(-50%);
+        font-size: 1rem;
+        font-weight: bold;
+        color: #555;
+        z-index: 2;
+    }
+
+    #graduation-100 {
+        top: calc(0%);
+    }
+
+    #graduation-75 {
+        top: calc(100% - 75%);
+    }
+
+    #graduation-50 {
+        top: calc(100% - 50%);
+    }
+
+    #graduation-25 {
+        top: calc(100% - 25%);
+    }
+
+    #progress.show {
+        transform: scaleY(1);
+    }
+
+    #bulb {
+        width: 70px;
+        height: 70px;
+        background-color: #b10505;
+        border: 3px solid rgb(143, 137, 137);
+        position: absolute;
+        bottom: 10%;
+        left: 50%;
+        transform: translateX(-50%) translateY(100%);
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    #progress-percent {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .photo-gallery figure {
+        margin: 0;
+        text-align: center;
+    }
+
+    .photo-gallery img {
+        width: 180px;
+        height: 130px;
+    }
+
+    .photo-gallery figcaption {
+        margin-top: 10px;
+    }
+
+    footer {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        background-color: rgba(128, 0, 128, 0.521);
+        color: #fff;
+        text-align: center;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        left: 0%;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .footer-content {
+        padding: 0px;
+        display: flex;
+        align-items: center;
+    }
+
+    footer nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    footer img {
+        margin: 0 10px;
+    }
+
+    footer nav ul li {
+        margin-top: 0;
+        margin-right: 15px;
+    }
+
+    footer nav ul li a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    footer nav ul li:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .SocialLogos{
+        position: relative;
+        height: 20px;
+        width: 20px;
+    }
+}
+
+/* For Cell Phones */
+@media (max-width: 767px) {
+    body {
+        background-color: #FFEFC1;
+        font-family: 'Times New Roman', Times, serif;
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        padding-bottom: 20px;
+        font-size: medium;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    .image-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .enlargeable {
+        max-width: 100%;
+        height: auto;
+        transition: transform 0.2s ease-in-out;
+        cursor: pointer;
+    }
+
+    .enlarged {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 999;
+        cursor: zoom-out;
+        object-fit: contain;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .photo-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .TeamPhotos {
+        width: 120px;
+        height: 90px;
+        object-fit: cover;
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .enlargeable:hover {
+        transform: scale(1.1);
+    }
+
+    figcaption {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .sidebar-container {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        z-index: 1;
+        transition: margin-left 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        margin-left: -200px;
+    }
+
+    .sidebar {
+        width: 150px;
+        height: 100%;
+        background-color: rgba(128, 0, 128, 0.521);
+        padding: 20px;
+        box-shadow: 0 0 10px hsla(60, 20%, 99%, 0.1);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar h2 {
+        margin-top: 0;
+        font-size: 1.6rem;
+        text-align: center;
+        color: white;
+    }
+
+    .tab {
+        margin-bottom: 10px;
+        cursor: pointer;
+        color: white;
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .tab.active {
+        font-weight: bold;
+        color: blue;
+    }
+
+    .content {
+        margin-left: 20px;
+        padding: 10px;
+        margin-right: 10px;
+        text-align: center;
+    }
+
+    .sponsor {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 10px;
+        font-size: medium;
+    }
+
+    .sponsor img {
+        margin-right: 10px;
+    }
+
+    .sponsor .sponsor-info {
+        flex: 1;
+        margin: 50px;
+    }
+
+    .sponsor h4 {
+        margin-top: 0;
+        font-size: 0.9rem;
+        color: #333;
+    }
+
+    .sponsor p {
+        margin-bottom: 0;
+        font-size: small;
+        color: #666;
+    }
+
+    .sponsor.alternate {
+        flex-direction: row;
+    }
+
+    .sponsor.alternate img {
+        margin-left: 0px;
+    }
+
+    .team-member {
+        left: 50%;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+    .team-member img {
+        max-width: 100px;
+        margin-right: 10px;
+    }
+
+    .team-member .member-info {
+        flex: 1;
+    }
+
+    .team-member.alternate {
+        flex-direction: row-reverse;
+    }
+
+    .team-member.alternate img {
+        margin-left: 10px;
+    }
+
+    .team-member h3 {
+        left: 50%;
+        margin-top: 0;
+        font-size: 0.9rem;
+        color: #333;
+    }
+
+    .team-member p {
+        left: 50%;
+        margin-bottom: 0;
+        font-size: 0.8rem;
+        color: #666;
+    }
+
+    #MembersTab {
+        position: relative;
+        left: calc(50% - 80px);
+    }
+
+    #ContactTab {
+        position: relative;
+        left: calc(50% - 70px);
+    }
+
+    .menu-button {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        cursor: pointer;
+        z-index: 3;
+    }
+
+    .MoneyBreakdown {
+        position: relative;
+        font-size: small;
+        font-style: italic;
+        bottom: 2%;
+    }
+
+    .team-logo {
+        position: fixed;
+        top: 25px;
+        left: 80%;
+        cursor: pointer;
+        z-index: 3;
+    }
+
+    .team-logo img:hover {
+        filter: brightness(50%);
+    }
+
+    .Sponsor-levels {
+        font-size: large;
+    }
+
+    .back-to-top {
+        position: fixed;
+        bottom: 15%;
+        right: 20px;
+        cursor: pointer;
+        z-index: 2;
+        background-color: #007bff;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        font-size: 1.5rem;
+        display: none;
+    }
+
+    .tooltip {
+        position: absolute;
+        top: 50%;
+        left: calc(50% - 100px);
+        background-color: transparent;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 15px;
+        display: none;
+        z-index: 1;
+    }
+
+    #thermometer:hover .tooltip {
+        display: block;
+    }
+
+    .back-to-top:hover {
+        background-color: #001aff;
+    }
+
+    .back-to-top.show {
+        display: block;
+    }
+
+    #thermometer {
+        margin: 20px auto;
+        width: 40px;
+        height: 300px;
+        position: relative;
+        border: 2px solid rgb(143, 137, 137);
+        z-index: 3;
+        border-radius: 50px 50px 0 0;
+        background-color: #ccc;
+    }
+
+    #thermometer:hover {
+        filter: brightness(50%);
+    }
+
+    #progress {
+        width: 40px;
+        height: 38%;
+        background: linear-gradient(to top, #b10505, #fc4c4c);
+        position: absolute;
+        border-radius: 50px 50px 0 0;
+        margin: 20px auto;
+        top: 55%;
+        z-index: 1;
+    }
+
+    .graduation {
+        position: absolute;
+        top: calc(100% - var(--graduation-position));
+        left: 60px;
+        transform: translateY(-50%);
+        font-size: 1rem;
+        font-weight: bold;
+        color: #555;
+        z-index: 2;
+    }
+
+    #graduation-100 {
+        top: calc(0%);
+    }
+
+    #graduation-75 {
+        top: calc(100% - 75%);
+    }
+
+    #graduation-50 {
+        top: calc(100% - 50%);
+    }
+
+    #graduation-25 {
+        top: calc(100% - 25%);
+    }
+
+    #progress.show {
+        transform: scaleY(1);
+    }
+
+    #bulb {
+        width: 70px;
+        height: 70px;
+        background-color: #b10505;
+        border: 3px solid rgb(143, 137, 137);
+        position: absolute;
+        bottom: 10%;
+        left: 50%;
+        transform: translateX(-50%) translateY(100%);
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    #progress-percent {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .photo-gallery figure {
+        margin: 0;
+        text-align: center;
+    }
+
+    .photo-gallery img {
+        width: 120px;
+        height: 90px;
+    }
+
+    .photo-gallery figcaption {
+        margin-top: 10px;
+    }
+
+    footer {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        background-color: rgba(128, 0, 128, 0.521);
+        color: #fff;
+        text-align: center;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        left: 0%;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .footer-content {
+        padding: 0px;
+        display: flex;
+        align-items: center;
+    }
+
+    footer nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    footer img {
+        margin: 0 10px;
+    }
+
+    footer nav ul li {
+        margin-top: 0;
+        margin-right: 15px;
+    }
+
+    footer nav ul li a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    footer nav ul li:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .SocialLogos{
+        position: relative;
+        height: 20px;
+        width: 20px;
+    }
+}
+
   </style>
-  <script>
-        // Event listener for when the "Team Photos" tab is clicked
-        document.getElementById('tab5-tab').addEventListener('click', openPhotosTab);
-
-        // Function to toggle sidebar visibility
-        function toggleSidebar() {
-            var sidebar = document.getElementById('sidebar');
-            var sidebarContainer = document.querySelector('.sidebar-container');
-
-            sidebar.classList.toggle('show');
-
-            if (sidebar.classList.contains('show')) {
-                sidebarContainer.style.marginLeft = '0';
-            } else {
-                sidebarContainer.style.marginLeft = '-200px';
-            }
-        }
-
-        // Function to open a specific tab and hide others
-        function openTab(tabId) {
-            var sidebar = document.getElementById('sidebar');
-            sidebar.classList.remove('show');
-
-            var sidebarContainer = document.querySelector('.sidebar-container');
-            sidebarContainer.style.marginLeft = '-200px';
-
-            var contentDivs = document.querySelectorAll('.content > div');
-            contentDivs.forEach(function(div) {
-                div.style.display = 'none';
-            });
-
-            var tabs = document.querySelectorAll('.tab');
-            tabs.forEach(function(tab) {
-                tab.classList.remove('active');
-            });
-
-            var selectedTab = document.getElementById(tabId);
-            if (selectedTab) {
-                selectedTab.style.display = 'block';
-            }
-
-            var clickedTab = document.getElementById(tabId + '-tab');
-            if (clickedTab) {
-                clickedTab.classList.add('active');
-            }
-        }
-
-        // Function to set default tab on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Open the HomeTab by default
-            openTab('HomeTab');
-        });
-
-        // Function to scroll to top
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth' // Smooth scroll
-            });
-        }
-
-        // Show or hide back-to-top button based on scroll position
-        window.addEventListener('scroll', function() {
-            var button = document.querySelector('.back-to-top');
-            if (window.scrollY > 300) { // Adjust the threshold as needed
-                button.classList.add('show');
-            } else {
-                button.classList.remove('show');
-            }
-        });
-
-        // Attach click event to back-to-top button
-        document.querySelector('.back-to-top').addEventListener('click', function(e) {
-            e.preventDefault();
-            scrollToTop();
-        });
-        function toggleMoneyText() {
-            var moneyText = document.getElementById('money-text');
-            var moneyDetails = document.getElementById('MoneyBreakdownDropbox');
-            var toggleLink = document.getElementById('toggle-link');
-
-            if (moneyDetails.style.display === 'none') {
-                moneyDetails.style.display = 'block';
-                toggleLink.textContent = 'Hide Details';
-            } else {
-                moneyDetails.style.display = 'none';
-                toggleLink.textContent = 'Show Details';
-            }
-        }
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('.enlargeable');
-
-            images.forEach(img => {
-                img.addEventListener('click', function() {
-                    img.classList.toggle('enlarged');
-                });
-            });
-        });
 
 
-    </script>
+
+
+
+
+
+
+
+
+  
 </head>
 <body>
     <div class="wrapper">
@@ -622,9 +1371,10 @@
                    To report an issue with this webpage: <em>cameronh344728@gmail.com</em><br><br><br>  
             </p>
             <h2><u>Socials:</u></h2>
-            <p>Instagram: <em><a href="https://www.instagram.com/team_9589/">@team_9589</em></a><br><br>
+            <img src="instagram.jpg" alt="InstaLogo " class="SocialLogos"> : <em><a href="https://www.instagram.com/team_9589/">@team_9589</em></a><br><br>
                     Facebook: <em><a href="https://www.facebook.com/profile.php?id=61561495672784">Skooble FRC</a></em><br><br>
-                    X: <em><a href="https://x.com/9589_frc">@9589_frc</a></em>
+                    X: <em><a href="https://x.com/9589_frc">@9589_frc</a></em><br><br>
+                    GitHub: <em><a href="https://x.com/9589_frc">@9589_frc</a></em>
                     <br><br><br>
                 </p>
         </div>
@@ -677,19 +1427,19 @@
             <div class="photo-gallery">
                 <figure>
                     <img class="enlargeable" class="TeamPhotos" src="BlueSkoobleWithRing.jpg">
-                    <figcaption>Blue Skooble with Ring</figcaption>
+                    <figcaption>Skooble Getting Ready To Fire</figcaption>
                 </figure>
                 <figure>
                     <img class="enlargeable" class="TeamPhotos" src="CallumCaseyCudmore.jpg"class="enlargeable">
-                    <figcaption>Callum Casey Cudmore</figcaption>
+                    <figcaption>Last-Minute Adjustments</figcaption>
                 </figure>
                 <figure>
                     <img class="enlargeable" class="TeamPhotos" src="CameronPraciceWithSkooble.JPG"class="enlargeable">
-                    <figcaption>Callum Sleeping</figcaption>
+                    <figcaption>Shooting Practice</figcaption>
                 </figure>
                 <figure>
                     <img class="enlargeable" class="TeamPhotos" src="ChloeAward.jpg"class="enlargeable">
-                    <figcaption>Callum Sleeping</figcaption>
+                    <figcaption>'Rookie Inspiration Award'</figcaption>
                 </figure>
                 <figure>
                     <img class="enlargeable" class="TeamPhotos" src="fans.png"class="enlargeable">
@@ -697,19 +1447,15 @@
                 </figure>
                 <figure>
                     <img class="enlargeable" class="TeamPhotos" src="TeamPhotoWithAward.jpg"class="enlargeable">
-                    <figcaption>Callum Sleeping</figcaption>
-                </figure>
-                <figure>
-                    <img class="enlargeable" class="TeamPhotos" src="TeamPhotoArnprior.jpg"class="enlargeable">
-                    <figcaption>Callum Sleeping</figcaption>
+                    <figcaption>The Original Six</figcaption>
                 </figure>
                 <figure>
                     <img class="enlargeable" class="TeamPhotos" src="PitPic.JPG"class="enlargeable">
-                    <figcaption>Callum Sleeping</figcaption>
+                    <figcaption>In The Pits</figcaption>
                 </figure>
                 <figure>
                     <img class="enlargeable" class="TeamPhotos" src="Match.jpg"class="enlargeable">
-                    <figcaption>Callum Sleeping</figcaption>
+                    <figcaption>Pre-game Strategy Meeting</figcaption>
                 </figure>
                 <figure>
                     <img class="enlargeable" class="TeamPhotos" src="SkoobleInArena.JPG"class="enlargeable">
@@ -717,6 +1463,10 @@
                 </figure>
                 <figure>
                     <img class="enlargeable" class="TeamPhotos" src="HannahMakingBumper.jpg"class="enlargeable">
+                    <figcaption>Hard At Work After School</figcaption>
+                </figure>
+                <figure>
+                    <img class="enlargeable" class="TeamPhotos" src="CallumSleep.JPG">
                     <figcaption>Callum Sleeping</figcaption>
                 </figure>
             </div>
@@ -735,6 +1485,14 @@
     </footer>    
     </div>
     </div>
+
+
+
+
+
+
+
+    
     <script>
         // Function to toggle sidebar visibility
         function toggleSidebar() {
@@ -807,14 +1565,121 @@
             e.preventDefault();
             scrollToTop();
         });
+
+        // Event listener for when the "Team Photos" tab is clicked
+        document.getElementById('tab5-tab').addEventListener('click', openPhotosTab);
+
+        // Function to toggle sidebar visibility
+        function toggleSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            var sidebarContainer = document.querySelector('.sidebar-container');
+
+            sidebar.classList.toggle('show');
+
+            if (sidebar.classList.contains('show')) {
+                sidebarContainer.style.marginLeft = '0';
+            } else {
+                sidebarContainer.style.marginLeft = '-200px';
+            }
+        }
+
+        // Function to open a specific tab and hide others
+        function openTab(tabId) {
+            var sidebar = document.getElementById('sidebar');
+            sidebar.classList.remove('show');
+
+            var sidebarContainer = document.querySelector('.sidebar-container');
+            sidebarContainer.style.marginLeft = '-200px';
+
+            var contentDivs = document.querySelectorAll('.content > div');
+            contentDivs.forEach(function(div) {
+                div.style.display = 'none';
+            });
+
+            var tabs = document.querySelectorAll('.tab');
+            tabs.forEach(function(tab) {
+                tab.classList.remove('active');
+            });
+
+            var selectedTab = document.getElementById(tabId);
+            if (selectedTab) {
+                selectedTab.style.display = 'block';
+            }
+
+            var clickedTab = document.getElementById(tabId + '-tab');
+            if (clickedTab) {
+                clickedTab.classList.add('active');
+            }
+        }
+
+        // Function to set default tab on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Open the HomeTab by default
+            openTab('HomeTab');
+        });
+
+        // Function to scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Smooth scroll
+            });
+        }
+
+        // Show or hide back-to-top button based on scroll position
+        window.addEventListener('scroll', function() {
+            var button = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) { // Adjust the threshold as needed
+                button.classList.add('show');
+            } else {
+                button.classList.remove('show');
+            }
+        });
+
+        // Attach click event to back-to-top button
+        document.querySelector('.back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            scrollToTop();
+        });
+        function toggleMoneyText() {
+            var moneyText = document.getElementById('money-text');
+            var moneyDetails = document.getElementById('MoneyBreakdownDropbox');
+            var toggleLink = document.getElementById('toggle-link');
+
+            if (moneyDetails.style.display === 'none') {
+                moneyDetails.style.display = 'block';
+                toggleLink.textContent = 'Hide Details';
+            } else {
+                moneyDetails.style.display = 'none';
+                toggleLink.textContent = 'Show Details';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.enlargeable');
+
+            images.forEach(img => {
+                img.addEventListener('click', function() {
+                    img.classList.toggle('enlarged');
+                });
+            });
+        });
     </script>
     <div class="back-to-top" onclick="scrollToTop()">&uarr;</div>
+
+
+
+
+
+
+
+
+
  
 </body>
 </html>
 <!--
     TODO
-        1. Add photos and descriptions of sponsors
+        1. Add photos and descriptions of remaining sponsors
         2. Add photos and descriptions of team members 
-        3. Caption team photos
+        3. Format for various screens
 -->
