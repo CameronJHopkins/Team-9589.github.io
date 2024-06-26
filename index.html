@@ -112,7 +112,7 @@
 
         /* Content area styling */
         .content {
-            margin-left: 100px; /*Adjust according to sidebar width */
+            margin-left: calc(50%+100px); /*Adjust according to sidebar width */
             padding: 20px;
             margin-right: 20px;
             text-align: center;
@@ -156,6 +156,7 @@
         }
 
         .team-member {
+            left: 50%; /*Adjust according to sidebar width */
             display: flex;
             align-items: center;
             margin-bottom: 20px;
@@ -176,19 +177,32 @@
         }
 
         .team-member.alternate img {
+
             margin-left: 20px;
         }
 
         .team-member h3 {
+            left: 50%;
             margin-top: 0;
             font-size: 1.2rem;
             color: #333;
         }
 
         .team-member p {
+            left: 50%;
             margin-bottom: 0;
             font-size: 1rem;
             color: #666;
+        }
+
+        #MembersTab{
+            position: relative;
+            left: calc(50% - 150px);
+        }
+
+        #ContactTab{
+            position: relative;
+            left: calc(50% - 120px);
         }
 
         .menu-button {
@@ -281,7 +295,7 @@
         #progress {
             width: 40px;
             height: 38%;
-            background: linear-gradient(to top, #b10505, #ff2600); /* Progress bar color */
+            background: linear-gradient(to top, #b10505, #fc4c4c); /* Progress bar color */
             position: absolute;
             border-radius: 50px 50px 0 0 ; /* Rounded top corners */
             margin:20px auto;
@@ -574,7 +588,7 @@
             <h2>Our Team</h2>
             <div class="team-member">
                 <img src="https://media.tenor.com/OM__4caso8gAAAAM/oh-yeah-vector.gif" alt="Person 1" class="enlargeable">
-                <div class="member-info">
+                <div class="member-info" left="50%">
                     <h3>Name of Person 1</h3>
                     <p>Description or role of Person 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
