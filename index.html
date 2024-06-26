@@ -10,7 +10,7 @@
 
     <style>
         /*For PC/Desktop*/
-    @media (min-width: 1000px){
+    @media (min-width: 4px){
 /* General body styling */
         body {
             background-color: #FFEFC1;
@@ -119,7 +119,7 @@
         /* Content area styling */
         .content {
             margin-left: calc(50%+100px); /*Adjust according to sidebar width */
-            padding: 20px;
+            padding: 60px;
             margin-right: 20px;
             text-align: center;
         }
@@ -128,7 +128,7 @@
             display: flex;
             align-items: center;
             margin-bottom: 20px;
-            padding: 10px;
+            padding: 0px;
             font-size: medium;
         }
 
@@ -138,7 +138,7 @@
 
         .sponsor .sponsor-info {
             flex: 1;
-            margin: 100px;
+            margin: 10px;
         }
 
         .sponsor h4 {
@@ -162,11 +162,11 @@
         }
 
         .team-member {
-            left: 50%; /*Adjust according to sidebar width */
             display: flex;
             align-items: center;
             margin-bottom: 20px;
             padding: 10px;
+            justify-content: center; /* Center align the team member containers */
         }
 
         .team-member img {
@@ -176,6 +176,7 @@
 
         .team-member .member-info {
             flex: 1;
+            text-align: center; /* Center align the text */
         }
 
         .team-member.alternate {
@@ -183,32 +184,29 @@
         }
 
         .team-member.alternate img {
-
             margin-left: 20px;
         }
 
         .team-member h3 {
-            left: 50%;
             margin-top: 0;
             font-size: 1.2rem;
             color: #333;
         }
 
         .team-member p {
-            left: 50%;
             margin-bottom: 0;
             font-size: 1rem;
             color: #666;
         }
 
-        #MembersTab{
+        #MembersTab {
             position: relative;
-            left: calc(50% - 150px);
+            text-align: center; /* Center align the MembersTab content */
         }
 
         #ContactTab{
             position: relative;
-            left: calc(50% - 120px);
+            text-align: center;
         }
 
         .menu-button {
@@ -419,11 +417,17 @@
             text-decoration: underline;
             cursor: pointer;
         }
+
+        .SocialLogos{
+            height: 20px;
+            width: 20px;
+            position: relative;
+        }
     }
 
 
         /* For Tablets */
-@media (min-width: 768px) and (max-width: 999px) {
+@media (min-width: 2px) and (max-width: 3px) {
     body {
         background-color: #FFEFC1;
         font-family: 'Times New Roman', Times, serif;
@@ -526,6 +530,7 @@
     }
 
     .content {
+        left: 50%;
         margin-left: calc(50% + 75px);
         padding: 15px;
         margin-right: 15px;
@@ -826,6 +831,12 @@
     footer nav ul li:hover {
         text-decoration: underline;
         cursor: pointer;
+    }
+
+    .SocialLogos{
+        position: relative;
+        height: 20px;
+        width: 20px;
     }
 }
 
@@ -1234,6 +1245,12 @@
         text-decoration: underline;
         cursor: pointer;
     }
+
+    .SocialLogos{
+        position: relative;
+        height: 20px;
+        width: 20px;
+    }
 }
 
   </style>
@@ -1354,7 +1371,7 @@
                    To report an issue with this webpage: <em>cameronh344728@gmail.com</em><br><br><br>  
             </p>
             <h2><u>Socials:</u></h2>
-            <p>Instagram: <em><a href="https://www.instagram.com/team_9589/">@team_9589</em></a><br><br>
+            <img src="instagram.jpg" alt="InstaLogo " class="SocialLogos"> : <em><a href="https://www.instagram.com/team_9589/">@team_9589</em></a><br><br>
                     Facebook: <em><a href="https://www.facebook.com/profile.php?id=61561495672784">Skooble FRC</a></em><br><br>
                     X: <em><a href="https://x.com/9589_frc">@9589_frc</a></em><br><br>
                     GitHub: <em><a href="https://x.com/9589_frc">@9589_frc</a></em>
@@ -1422,7 +1439,7 @@
                 </figure>
                 <figure>
                     <img class="enlargeable" class="TeamPhotos" src="ChloeAward.jpg"class="enlargeable">
-                    <figcaption>Recieving 'Rookie Inspiration Award'</figcaption>
+                    <figcaption>'Rookie Inspiration Award'</figcaption>
                 </figure>
                 <figure>
                     <img class="enlargeable" class="TeamPhotos" src="fans.png"class="enlargeable">
@@ -1450,7 +1467,7 @@
                 </figure>
                 <figure>
                     <img class="enlargeable" class="TeamPhotos" src="HannahMakingBumper.jpg"class="enlargeable">
-                    <figcaption>Callum Sleeping</figcaption>
+                    <figcaption>Hard At Work After School</figcaption>
                 </figure>
                 <figure>
                     <img class="enlargeable" class="TeamPhotos" src="CallumSleep.JPG">
