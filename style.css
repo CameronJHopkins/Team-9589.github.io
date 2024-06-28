@@ -1,5 +1,5 @@
 /*For PC/Desktop*/
-@media (min-width: 4px){
+@media (min-width: 1008px){
 /* General body styling */
 body {
     background-color: #FFEFC1;
@@ -418,7 +418,7 @@ footer nav ul li:hover {
 
 
 /* For Tablets */
-@media (min-width: 2px) and (max-width: 3px) {
+@media (min-width: 641px) and (max-width: 1007px) {
 body {
 background-color: #FFEFC1;
 font-family: 'Times New Roman', Times, serif;
@@ -839,7 +839,7 @@ width: 50%;
 }
 
 /* For Cell Phones */
-@media (max-width: 767px) {
+@media (max-width: 640px) {
 body {
 background-color: #FFEFC1;
 font-family: 'Times New Roman', Times, serif;
