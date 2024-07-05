@@ -4,22 +4,14 @@ function toggleSidebar() {
     var sidebarContainer = document.querySelector('.sidebar-container');
 
     sidebar.classList.toggle('show');
+    sidebarContainer.style.marginLeft = sidebar.classList.contains('show') ? '0' : '-200px';
 
-    if (sidebar.classList.contains('show')) {
-        sidebarContainer.style.marginLeft = '0';
-    } else {
-        sidebarContainer.style.marginLeft = '-200px';
-    }
+    // Ensure all tabs are closed when sidebar is toggled
+    closeAllTabs();
 }
 
 // Function to open a specific tab and hide others
 function openTab(tabId) {
-    var sidebar = document.getElementById('sidebar');
-    sidebar.classList.remove('show');
-
-    var sidebarContainer = document.querySelector('.sidebar-container');
-    sidebarContainer.style.marginLeft = '-200px';
-
     var contentDivs = document.querySelectorAll('.content > div');
     contentDivs.forEach(function(div) {
         div.style.display = 'none';
@@ -41,10 +33,33 @@ function openTab(tabId) {
     }
 }
 
+// Function to close all tabs
+function closeAllTabs() {
+    var contentDivs = document.querySelectorAll('.content > div');
+    contentDivs.forEach(function(div) {
+        div.style.display = 'none';
+    });
+
+    var tabs = document.querySelectorAll('.tab');
+    tabs.forEach(function(tab) {
+        tab.classList.remove('active');
+    });
+}
+
 // Function to set default tab on page load
 document.addEventListener('DOMContentLoaded', function() {
     // Open the HomeTab by default
     openTab('HomeTab');
+
+    // Attach click event to tabs
+    var tabLinks = document.querySelectorAll('.tab-link');
+    tabLinks.forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            var tabId = link.getAttribute('data-tab');
+            openTab(tabId);
+        });
+    });
 
     // Attach click event to enlargeable images
     const images = document.querySelectorAll('.enlargeable');
@@ -81,11 +96,10 @@ window.addEventListener('scroll', function() {
 });
 
 function toggleMoneyText() {
-    var moneyText = document.getElementById('money-text');
     var moneyDetails = document.getElementById('MoneyBreakdownDropbox');
     var toggleLink = document.getElementById('toggle-link');
 
-    if (moneyDetails.style.display === 'none') {
+    if (moneyDetails.style.display === 'none' || moneyDetails.style.display === '') {
         moneyDetails.style.display = 'block';
         toggleLink.textContent = 'Hide Details';
     } else {
