@@ -187,7 +187,7 @@
             <img src="github.jpg" alt="GitHub " class="SocialLogos"> : <em><a href="https://github.com/Team-9589/">Team_9589</a></em><br><br><br>
                 </p>
         </div>
-	<div id="SponsorTab" style="display: none;">
+        <div id="SponsorTab" style="display: none;"
             <h2>Our Sponsors</h2>
             <p class="Sponsor-levels">
                 <strong>Gold Sponsors</strong><br><br></p>
