@@ -1,3 +1,5 @@
+<!-- a test comment to verify the new version control system-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -184,7 +186,8 @@
             <img src="instagram.jpg" alt="Instagram " class="SocialLogos"> : <em><a href="https://www.instagram.com/team_9589/">@team_9589</em></a><br><br>
             <img src="facebook.jpg" alt="Facebook " class="SocialLogos"> : <em><a href="https://www.facebook.com/profile.php?id=61561495672784">Skooble FRC</a></em><br><br>
             <img src="x.jpg" alt="X " class="SocialLogos"> : <em><a href="https://x.com/9589_frc">@9589_frc</a></em><br><br>
-            <img src="github.jpg" alt="GitHub " class="SocialLogos"> : <em><a href="https://github.com/Team-9589/">Team_9589</a></em><br><br><br>
+            <img src="github.jpg" alt="GitHub " class="SocialLogos"> : <em><a href="https://github.com/Team-9589/">Team_9589</a></em>
+                    <br><br><br>
                 </p>
         </div>
         <div id="SponsorTab" style="display: none;"
