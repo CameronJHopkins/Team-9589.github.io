@@ -105,5 +105,5 @@ function toggleMoneyText() {
     } else {
         moneyDetails.style.display = 'none';
         toggleLink.textContent = 'Show Details';
-    }
+    };
 }
